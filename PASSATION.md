@@ -33,12 +33,12 @@ sh outils/build_all.sh
 ```
 
 ```bash
-python3 .claude/serve.py 5188 site
+python3 outils/serve.py
 ```
 
 Puis ouvrez http://localhost:5188.
 
-- **Serveur :** `.claude/serve.py` reproduit Vercel (adresses sans `.html`, `Cache-Control: no-cache`). Dans Claude Code (application de bureau), il est déclaré dans `.claude/launch.json` sous le nom `mepaye-landing`, à lancer avec l'outil de prévisualisation.
+- **Serveur :** `outils/serve.py` (ou `.claude/serve.py` sur le Mac d'origine) reproduit Vercel (adresses sans `.html`, `Cache-Control: no-cache`). Dans Claude Code (application de bureau), il est déclaré dans `.claude/launch.json` sous le nom `mepaye-landing`, à lancer avec l'outil de prévisualisation.
 - **Vérification automatique** (49 pages × 2 largeurs : erreurs JS, ressources en 404, débordements) :
 
 ```bash
