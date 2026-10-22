@@ -237,7 +237,7 @@ UP=1.5 python3 outils/images/mockup.py mockup.png sortie.png ecran1.png[:barre_o
    - masque de base par la vision macOS : `outils/images/cutout` (à recompiler depuis `cutout.swift` avec `swiftc`) ;
    - finition : `outils/images/cutwhite.py`, avec l'option `hair` pour les tresses ;
    - autre outil : `defringe.py`.
-5. **Couleur des miniatures produits :** chaque type a sa teinte, comme dans l'app : ebook en bleu cobalt (d'origine), template en vert `#10A37F`, formation en violet `#7C3AED`. `outils/images/teinte.py source.png sortie.png '#10A37F' 0.9` fait tourner les bleus vers la teinte voulue (luminosité conservée, peau et blancs intacts). Les miniatures finales sont dans `site/assets/covers/`.
+5. **Couleur des miniatures produits :** une teinte par produit, pour que la grille alterne : « Créer et vendre » bleu cobalt (d'origine), facture vert `#10A37F`, guide orange `#EA580C`, calendrier rose `#DB2777`, formations violet `#7C3AED`, pack ambre `#D97706`. `outils/images/teinte.py source.png sortie.png '#10A37F' 0.9` fait tourner les bleus vers la teinte voulue (luminosité conservée, peau et blancs intacts). Les miniatures finales sont dans `site/assets/covers/`.
 6. **Notification iOS :** rendue en HTML avec SF Pro (`outils/barre-ios/notif.html`), capturée par `outils/captures/notifscr.mjs`.
 7. **Export :** WebP qualité 84 à 90, dans le bon dossier de `site/assets/`. Reconstruisez ensuite : `optim.py` fabrique les versions réduites.
 

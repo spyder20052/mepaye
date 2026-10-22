@@ -696,3 +696,15 @@ html, body { overflow-x: clip; }
   .quote blockquote { margin-top: 10px; margin-bottom: 12px; font-size: 14px; line-height: 20px; }
   .quotes--track .quote { width: 236px; min-height: 0; }
 }
+
+/* l'arche reste entière, mais son pied se fond dans le blanc de la page : plus de coupe nette sous le téléphone */
+.stage__arch { -webkit-mask-image: linear-gradient(180deg, #000 0, #000 82%, transparent 100%); mask-image: linear-gradient(180deg, #000 0, #000 82%, transparent 100%); box-shadow: none; }
+.stage__floor { display: none; }
+/* notification : un vrai espace avant « maintenant », comme sur iOS */
+.notif__top { gap: max(10px, 1cqw); }
+@media (max-width: 640px) {
+  /* la bannière reste à l'intérieur de l'arche, avec un peu d'air sur le bord droit */
+  .notifs { right: 7cqw; top: 5cqw; }
+  .notif { padding: 2.2cqw 2.8cqw; gap: 2.2cqw; }
+  .notif__top, .notif__msg { font-size: max(10px, 2.75cqw); }
+}
