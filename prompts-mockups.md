@@ -36,7 +36,7 @@ text, logos, watermark, user interface on screen, screen reflections, glare on s
 | **M1** | Hero | le téléphone debout, comme une sculpture | blanc | page produit de Studio Aïcha |
 | **M2** | Votre boutique | deux téléphones flottants, l'un devant l'autre | bleu pâle `#EFF6FF` | accueil + produits de la boutique |
 | **M3** | Plusieurs marques | trois téléphones en éventail | gris clair `#F4F4F5` | trois boutiques différentes |
-| **M4** | Décrivez votre idée | la main qui tend le téléphone, contre-plongée | jaune pâle `#FEF3C7` | génération de l'ebook par l'IA |
+| **M4** | Décrivez votre idée | la main qui tend le téléphone, contre-plongée | bleu pâle `#EFF6FF` | génération de l'ebook par l'IA |
 | **M5** | Le paiement | le gros plan sur la notification | bleu pâle `#EFF6FF` | notification « Nouvelle vente » |
 | **M6** | Réserve (pages annexes) | le téléphone posé à plat, vu en plongée | gris clair `#F4F4F5` | au choix |
 
@@ -63,12 +63,32 @@ Three identical smartphones arranged like a fanned hand of cards on a seamless v
 ```
 
 ### M4 · La main qui tend le téléphone (Décrivez votre idée)
-**Fichier :** `mockup-creation.png` · **Format :** 16:9, 3 840 × 2 160 px.
-- **Référence :** votre image de la main, dont on reprend l'esprit, avec un angle moins fort pour garder le texte lisible.
+**Fichier :** `mockup-creation.png` · **Format :** 16:9, 3 840 × 2 160 px · **Fond :** bleu pâle `#EFF6FF` (le jaune a été refusé).
+- **Orientation à garder (celle du visuel actuel) :** main droite vue paume face à nous, pouce sur le bord gauche, quatre doigts sur le bord droit ; le téléphone basculé vers l'arrière, le haut plus loin que le bas, l'axe penché d'environ 18° (haut vers la gauche) ; on voit le bord inférieur, les haut-parleurs et le port USB-C au premier plan.
+- **Ce qui faisait « IA » dans la version actuelle :** le téléphone est presque deux fois trop grand pour la main (il dépasse la largeur de la paume et la longueur des doigts), effet aggravé par un grand-angle. Le prompt ci-dessous impose les vraies mesures (téléphone 150 × 72 mm, paume d'adulte 85 à 90 mm) et un téléobjectif, pour que la main et le téléphone gardent leur échelle réelle.
+- **Cadrage :** sur téléphone, le site recadre l'image en carré, centré vers la droite. Le sujet doit tenir dans la moitié droite, avec de l'air jusqu'au bord droit ; seul le poignet peut sortir par le bas.
 
 ```text
-Low-angle hero shot of a dark-skinned hand holding a smartphone from behind and below, fingertips lightly gripping the side frames, the phone tilted back about 25 degrees toward the viewer so the screen faces the camera and the bottom titanium edge and speaker grille are visible in the foreground. The hand is softly lit and slightly out of focus, the phone and its screen are tack sharp. Seamless pale butter yellow #FEF3C7 studio backdrop with a soft gradient toward white at the top. The phone fills 70 percent of the frame height, placed right of center. Horizontal 16:9, empty space on the left.
+Realistic close-up photograph of an adult man's right hand holding a smartphone out toward the camera to show its screen, palm facing the camera behind the phone. The thumb rests along the left side frame, its tip reaching about 40 percent of the way up the phone. The four fingers curl around the right side frame, only the fingertips and first joints visible beyond the edge, naturally spaced from the upper third down to the lower right corner. The bottom of the phone rests on the base of the palm near the little finger, the wrist entering the frame from the bottom edge.
+
+True real-world scale, this is critical: the phone is a standard 6.3 inch iPhone, 150 mm tall and 72 mm wide, held by an average adult hand with a palm about 88 mm wide. The phone is slightly narrower than the palm across the knuckles, the phone's height is about the length of the hand from the base of the palm to the fingertips, and the hand clearly wraps around the phone. The phone and the hand are at the same distance from the camera, no forced perspective.
+
+Orientation: the phone is tilted back about 25 degrees so its top is farther from the camera than its bottom, and its long axis leans about 18 degrees with the top toward the left. The screen faces the camera, all four rounded screen corners fully visible, no finger over the screen. The bottom titanium edge, the speaker holes and the USB-C port are visible in the foreground.
+
+Shot from about 1.2 meters with a 100mm macro lens, no wide-angle distortion. The hand and phone are placed right of center and fill about 85 percent of the frame height, with clear empty space on the left and a margin on the right; only the wrist is cut by the bottom edge. Seamless pale blue #EFF6FF studio backdrop with a soft gradient toward white at the top. Soft daylight from the top left, gentle shadows in the palm. Natural dark brown skin with real texture: visible pores, fine palm creases, slight unevenness of tone, short clean natural nails, no lotion shine. Anatomically correct hand with exactly five fingers and natural knuckle proportions. Horizontal 16:9.
 ```
+
+**À ajouter à la liste « À exclure » pour ce visuel :**
+
+```text
+oversized phone, giant phone, tiny hand, small hand, child hand, wide-angle lens, fisheye, forced perspective, phone closer to the camera than the hand, waxy skin, airbrushed skin, plastic skin, glossy skin, overly smooth palm, long fingers, elongated fingers, stiff claw grip, fingers floating off the frame
+```
+
+**Contrôle avant de garder une variante (en plus des règles du § 1) :**
+1. Le téléphone est un peu **moins large que la paume** au niveau des jointures.
+2. Le pouce couvre environ **un tiers de la hauteur** du téléphone.
+3. Les doigts **touchent** le cadre et le contournent ; on ne voit que le bout des quatre doigts.
+4. La peau a du grain (pores, plis de la paume) : si elle paraît lisse ou cireuse, on jette.
 
 ### M5 · Le gros plan sur la notification (Le paiement)
 **Fichier :** `mockup-notification.png` · **Format :** 16:9, 3 840 × 2 160 px.
