@@ -40,7 +40,7 @@ CHEV = '<svg aria-hidden="true"><use href="#i-chev"/></svg>'
 CHECK = '<svg aria-hidden="true"><use href="#i-check"/></svg>'
 
 # miniatures photo des produits (assets/covers/<slug>.webp) ; les autres gardent la couverture illustrée
-COVERS = {'formation-courte-vendre-en-ligne', 'modele-facture-freelance', 'guide-lancer-sa-boutique', 'calendrier-editorial-90-jours', 'formation-comptabilite-freelance'}
+COVERS = {'formation-courte-vendre-en-ligne', 'modele-facture-freelance', 'guide-lancer-sa-boutique', 'calendrier-editorial-90-jours', 'formation-comptabilite-freelance', 'modeles-publications-reseaux-sociaux'}
 def cover_src(slug): return f'assets/covers/{slug}.webp' if slug in COVERS else ''
 
 def cover(kind, v, big=False, slug=None):
