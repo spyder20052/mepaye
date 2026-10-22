@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# système de travail local
+.claude/
+
+# dépendances installées
+outils/captures/node_modules/
+
+# fichiers de travail et sources intermédiaires
+photos-a-trier/
+captures-revue/
+captures-app/
+
+# direction artistique : planches volumineuses, sources de référence
+DA/
+
+# étude typographique intermédiaire
+etude-polices/
+
+# avis de construction locaux
+*.log

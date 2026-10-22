@@ -1,0 +1,641 @@
+/* =========================================================
+   mepaye · landing
+   La page actuelle de mepaye.com, à l'identique dans sa structure,
+   ses textes et ses polices (Manrope pour les titres, la police du
+   système pour le texte). Tout est centré et statique : seules de
+   légères réactions au survol, et l'animation du logo avant le pied
+   de page.
+   ========================================================= */
+:root {
+  --blue: #0866FF; --blue-h: #0057E0;
+  --ink: #18181B; --text: #3F3F46; --muted: #71717A; --line: #E4E4E7;
+  --p-blue: #EFF6FF; --p-grey: #F4F4F5; --p-yellow: #FEF3C7; --soft: #FAFAFA;
+  --display: "Urbanist", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, system-ui, sans-serif;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --wrap: 1200px; --gut: 24px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 64px; }
+body { background: #fff; color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button, summary { font: inherit; color: inherit; }
+.wrap { width: 100%; max-width: calc(var(--wrap) + var(--gut) * 2); margin: 0 auto; padding: 0 var(--gut); }
+.skip { position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: .6rem 1rem; border-radius: 999px; background: var(--ink); color: #fff; font-size: .875rem; }
+.skip:focus { top: 1rem; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* boutons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; height: 44px; padding: 0 24px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 15px; font-weight: 400; white-space: nowrap; box-shadow: 0 1px 2px rgba(8,102,255,.2), 0 8px 20px -10px rgba(8,102,255,.55); transition: background-color .25s var(--ease), box-shadow .25s var(--ease); }
+.btn:hover { background: var(--blue-h); box-shadow: 0 1px 2px rgba(8,102,255,.25), 0 12px 26px -12px rgba(8,102,255,.7); }
+.btn--ghost { background: #fff; color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue); }
+.btn--ghost:hover { background: #F5F9FF; box-shadow: inset 0 0 0 1px var(--blue); }
+.btn--sm { height: 30px; padding: 0 14px; font-size: 13px; font-weight: 400; box-shadow: none; }
+.btn--sm:hover { box-shadow: none; }
+.btn--lg { height: 48px; padding: 0 30px; font-size: 15px; }
+
+/* en-tête */
+/* barre fine, à la Apple : elle s'efface quand on descend, revient dès qu'on remonte */
+.top { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.82); -webkit-backdrop-filter: saturate(1.8) blur(20px); backdrop-filter: saturate(1.8) blur(20px); box-shadow: 0 1px 0 transparent; transition: transform .45s var(--ease), box-shadow .3s; }
+.top.is-hidden { transform: translateY(-100%); }
+.top.is-stuck { box-shadow: 0 1px 0 rgba(24,24,27,.07); }
+.top__in { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.top__logo img { width: 84px; height: auto; }
+.top__nav { display: flex; align-items: center; gap: 28px; font-size: 13px; font-weight: 400; color: #1D1D1F; letter-spacing: -.005em; }
+.top__nav > a:not(.btn) { transition: color .2s; }
+.top__nav > a:not(.btn):hover { color: var(--blue); }
+.top__menu { display: none; position: relative; }
+.top__menu summary { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; list-style: none; }
+.top__menu summary::-webkit-details-marker { display: none; }
+.top__menu summary svg { width: 22px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; }
+.top__drop { position: absolute; right: 0; top: calc(100% + 8px); display: grid; gap: 4px; width: 220px; padding: 10px; border-radius: 18px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 24px 48px -20px rgba(24,24,27,.25); }
+.top__drop a:not(.btn) { padding: 10px 12px; border-radius: 10px; font-size: 15px; font-weight: 400; }
+.top__drop a:not(.btn):hover { background: var(--soft); }
+.top__drop .btn { margin-top: 4px; }
+
+.ph--side { --w: clamp(180px, 15.5vw, 222px); top: 14% !important; z-index: 1; }
+.ph--l { translate: calc(-50% - clamp(150px, 14vw, 200px)) 0; rotate: -7deg; }
+.ph--r { translate: calc(-50% + clamp(150px, 14vw, 200px)) 0; rotate: 7deg; }
+
+/* le téléphone : une vraie capture de l'application dans un écran */
+/* =========================================================
+   Le téléphone : un iPhone Pro, à l'échelle réelle (402 × 874 pt).
+   Toutes les mesures dépendent de --w, la largeur du téléphone.
+   ========================================================= */
+.ph { --w: 280px; position: relative; flex: none; width: var(--w); height: calc(var(--w) * 2.055); border-radius: calc(var(--w) * .172);
+  /* cadre en titane argent : reflets doux le long des tranches */
+  background: linear-gradient(90deg, #A7ADB6 0%, #EEF0F3 3.5%, #C9CDD4 7%, #DADDE2 50%, #C9CDD4 93%, #EEF0F3 96.5%, #A7ADB6 100%);
+  box-shadow: inset 0 0 0 calc(var(--w) * .0035) rgba(255,255,255,.7), 0 1px 2px rgba(16,24,40,.08), 0 calc(var(--w) * .1) calc(var(--w) * .2) calc(var(--w) * -.08) rgba(16,36,74,.32), 0 calc(var(--w) * .04) calc(var(--w) * .08) calc(var(--w) * -.04) rgba(16,36,74,.18); }
+.ph__glass { position: absolute; inset: calc(var(--w) * .013); border-radius: calc(var(--w) * .159); background: #050506; box-shadow: inset 0 0 0 calc(var(--w) * .002) rgba(255,255,255,.16); }
+.ph__screen { position: absolute; inset: calc(var(--w) * .026); overflow: hidden; border-radius: calc(var(--w) * .134); background: #fff; }
+/* reflet léger du verre */
+.ph__screen::after { content: ""; position: absolute; inset: 0; z-index: 4; background: linear-gradient(118deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 32%); pointer-events: none; }
+.ph__bar { position: absolute; inset: 0 0 auto; z-index: 2; display: flex; align-items: center; justify-content: space-between; height: calc(var(--w) * .124); padding: 0 calc(var(--w) * .085) 0 calc(var(--w) * .1); background: #fff; color: #000; }
+.ph__bar b { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; font-size: calc(var(--w) * .047); font-weight: 600; letter-spacing: -.01em; }
+.ph__sys { display: flex; align-items: center; gap: calc(var(--w) * .016); }
+.ph__sys svg { flex: none; width: calc(var(--w) * .05); height: calc(var(--w) * .034); fill: #000; color: #000; }
+.ph__sys svg:nth-child(2) { width: calc(var(--w) * .045); }
+.ph__sys .ph__bat { width: calc(var(--w) * .078); height: calc(var(--w) * .036); }
+.ph__screen img { position: absolute; left: 0; top: calc(var(--w) * .124); width: 100%; height: auto; }
+.ph__island { position: absolute; left: 50%; top: calc(var(--w) * .03); z-index: 3; width: calc(var(--w) * .29); height: calc(var(--w) * .086); translate: -50% 0; border-radius: 999px; background: #000; }
+.ph__island::after { content: ""; position: absolute; right: 14%; top: 50%; width: calc(var(--w) * .028); height: calc(var(--w) * .028); translate: 0 -50%; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #2A3350 0%, #0B0E18 60%); }
+.ph__home { position: absolute; left: 50%; bottom: calc(var(--w) * .018); z-index: 3; width: calc(var(--w) * .34); height: calc(var(--w) * .013); translate: -50% 0; border-radius: 999px; background: rgba(0,0,0,.78); }
+/* boutons : action et volume à gauche, marche et commande de l'appareil photo à droite */
+.ph__k { position: absolute; width: calc(var(--w) * .012); border-radius: calc(var(--w) * .006); background: linear-gradient(90deg, #9AA0AA, #E4E7EB 55%, #B5BAC2); }
+.ph__k--act, .ph__k--up, .ph__k--dn { left: calc(var(--w) * -.009); }
+.ph__k--pow, .ph__k--cam { right: calc(var(--w) * -.009); }
+.ph__k--act { top: calc(var(--w) * .40); height: calc(var(--w) * .07); }
+.ph__k--up { top: calc(var(--w) * .55); height: calc(var(--w) * .13); }
+.ph__k--dn { top: calc(var(--w) * .72); height: calc(var(--w) * .13); }
+.ph__k--pow { top: calc(var(--w) * .62); height: calc(var(--w) * .2); }
+.ph__k--cam { top: calc(var(--w) * 1.12); height: calc(var(--w) * .12); width: calc(var(--w) * .009); }
+
+/* en-tête de section, centré, comme sur mepaye.com */
+/* chaque section respire : environ 220 px entre deux sections sur ordinateur, 140 px sur mobile */
+.sec { padding: clamp(88px, 9.5vw, 136px) 0; }
+.sec + .sec { padding-top: clamp(52px, 6vw, 88px); }
+.sh { display: flex; flex-direction: column; align-items: center; max-width: 880px; margin: 0 auto; text-align: center; }
+.sh__k { font-size: 11px; font-weight: 500; line-height: 16px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.sh__t { margin-top: 12px; font-family: var(--display); font-weight: 400; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.25; letter-spacing: -.02em; color: var(--ink); text-wrap: balance; }
+.sh__p { margin-top: 16px; max-width: 620px; font-size: 15px; line-height: 22px; color: var(--text); }
+.sh__strong { margin-top: 24px; text-align: center; font-size: 15px; font-weight: 500; color: var(--ink); }
+.sh__small { margin-top: 4px; text-align: center; font-size: 13px; color: var(--muted); }
+
+/* le panneau coloré, l'écran posé dedans, coupé par le bas */
+.panel { position: relative; height: clamp(420px, 36vw, 500px); margin-top: 64px; padding-top: 56px; border-radius: 24px; overflow: hidden; display: flex; justify-content: center; }
+.panel--blue { background: var(--p-blue); }
+.panel--grey { background: var(--p-grey); }
+.panel--yellow { background: var(--p-yellow); }
+.panel::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(24,24,27,.04); pointer-events: none; }
+.panel > .ph { --w: clamp(240px, 19.5vw, 280px); }
+.chip { position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: 10px; padding: 7px 15px 7px 7px; border-radius: 999px; background: #fff; font-size: 14px; font-weight: 400; color: var(--ink); white-space: nowrap; box-shadow: 0 1px 2px rgba(24,24,27,.06), 0 10px 24px -14px rgba(24,24,27,.25); }
+.chip__ic { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: var(--c); }
+.chip__ic svg { width: 15px; height: 15px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.chip--tl { left: 16%; top: 22%; }
+.chip--tr { right: 16%; top: 16%; }
+.chip--ml { left: 14%; top: 50%; }
+.chip--bl { left: 18%; bottom: 16%; }
+.chip--br { right: 16%; bottom: 22%; }
+
+/* moyens de paiement */
+.panel--logos { height: auto; padding: 48px 24px; }
+.logos { display: grid; grid-template-columns: repeat(6, 56px); gap: 28px 56px; justify-content: center; }
+.logos img { width: 56px; height: 56px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px rgba(24,24,27,.06), 0 6px 14px -8px rgba(24,24,27,.3); }
+
+/* ce que vous vendez */
+.kinds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 940px; margin: 56px auto 0; }
+.kind { padding: 24px; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); text-align: left; transition: box-shadow .25s var(--ease), transform .3s var(--ease); }
+.kind:hover { box-shadow: inset 0 0 0 1px rgba(8,102,255,.35), 0 14px 30px -20px rgba(8,102,255,.45); transform: translateY(-2px); }
+.kind__ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--c); box-shadow: inset 0 1px 0 rgba(255,255,255,.25); }
+.kind__ic svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.kind h3 { margin-top: 16px; font-family: var(--display); font-weight: 500; font-size: 16px; letter-spacing: -.01em; color: var(--ink); }
+.kind p { margin-top: 4px; font-size: 13px; line-height: 20px; color: var(--muted); }
+
+/* avis */
+.quotes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 56px; }
+.quote { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; padding: 20px; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); text-align: left; }
+.quote blockquote { font-size: 14px; line-height: 21px; color: var(--text); }
+.quote__who { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--ink); }
+.quote__av { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; background: var(--c); color: #fff; font-size: 11px; font-weight: 500; }
+
+/* pourquoi mepaye */
+.why { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 900px; margin: 56px auto 0; }
+.why__c { display: flex; gap: 16px; padding: 20px; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); text-align: left; }
+.why__c .kind__ic { flex: none; }
+.why__c h3 { font-family: var(--display); font-weight: 500; font-size: 16px; line-height: 1.3; letter-spacing: -.01em; color: var(--ink); }
+.why__c p { margin-top: 6px; font-size: 13px; line-height: 20px; color: var(--muted); }
+
+/* commencez aujourd'hui, et le logo formé par deux personnes */
+.final { --m: 0; --h: 0; --talk: 1; display: flex; flex-direction: column; align-items: center; margin-top: clamp(40px, 5vw, 72px); padding: clamp(112px, 11vw, 160px) var(--gut); background: var(--soft); text-align: center; }
+.final__mark { width: clamp(170px, 16vw, 220px); margin-bottom: 48px; }
+.final__sign { display: block; width: 100%; height: auto; overflow: visible; }
+.final__a { transform: translateX(calc((1 - var(--m)) * -40px)); }
+.final__b { transform: translateX(calc((1 - var(--m)) * 66px)); }
+.final__head { transform: translateY(calc(var(--h) * -46px)); opacity: calc(1 - var(--h)); }
+.final__bob, .final__say, .final__dot { transform-box: fill-box; }
+.final__bob { transform-origin: 50% 100%; }
+.final__sayw { opacity: var(--talk); }
+.final__say { opacity: 0; transform-origin: 50% 100%; }
+.final.is-talk .final__a .final__bob { animation: fTalk 2.6s var(--ease) infinite; }
+.final.is-talk .final__b .final__bob { animation: fTalk 2.6s var(--ease) 1.3s infinite; }
+.final.is-talk .final__say--a { animation: fSay 2.6s var(--ease) infinite; }
+.final.is-talk .final__say--b { animation: fSay 2.6s var(--ease) 1.3s infinite; }
+.final.is-talk .final__dot { animation: fDot .9s ease-in-out infinite; }
+.final.is-talk .final__dot:nth-of-type(2) { animation-delay: .15s; }
+.final.is-talk .final__dot:nth-of-type(3) { animation-delay: .3s; }
+@keyframes fTalk { 0%, 40%, 100% { transform: none; } 7% { transform: translateY(-4px) rotate(-5deg); } 15% { transform: translateY(-1px) rotate(2deg); } 23% { transform: translateY(-3px) rotate(-3deg); } 32% { transform: none; } }
+@keyframes fSay { 0% { opacity: 0; transform: translateY(6px) scale(.6); } 7% { opacity: 1; transform: none; } 38% { opacity: 1; transform: none; } 46%, 100% { opacity: 0; transform: translateY(-4px) scale(.92); } }
+@keyframes fDot { 0%, 100% { opacity: .4; transform: none; } 50% { opacity: 1; transform: translateY(-2px); } }
+.final__t { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 2.8vw, 40px); line-height: 1.2; letter-spacing: -.025em; color: var(--ink); }
+.final__p { margin-top: 16px; max-width: 34rem; font-size: 15px; line-height: 22px; color: var(--text); }
+.final .btn { margin-top: 40px; }
+
+/* pied de page : celui de mepaye.com */
+.foot { padding: 40px 0 32px; background: var(--soft); border-top: 1px solid rgba(24,24,27,.05); }
+.foot__in { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
+.foot__logo img { width: 92px; height: auto; }
+.foot__nav, .foot__legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 14px; color: var(--text); }
+.foot__nav i, .foot__legal i { font-style: normal; color: #C4C4CC; }
+.foot__nav a:hover, .foot__legal a:hover { color: var(--blue); }
+.foot__copy { justify-self: end; font-size: 13px; color: var(--muted); }
+.foot__legal { margin-top: 20px; font-size: 12px; color: var(--muted); }
+
+/* adaptations */
+@media (max-width: 1024px) {
+  .quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chip--tl, .chip--ml { left: 6%; } .chip--bl { left: 8%; } .chip--tr, .chip--br { right: 6%; }
+}
+@media (max-width: 760px) {
+  .top__nav { display: none; }
+  .top__menu { display: block; }
+  .top__in { height: 52px; }
+  .top__logo img { width: 82px; }
+  /* la section finale enchaîne sur la précédente sans le grand vide : le gris remonte juste sous la dernière carte */
+  .final { margin-top: 0; padding: 56px var(--gut); }
+  .final__mark { margin-bottom: 32px; }
+  .sec:has(+ .final) { padding-bottom: 28px; }
+  .panel { height: auto; min-height: 0; max-height: 470px; flex-direction: column; align-items: center; margin-top: 40px; padding: 20px 16px 0; }
+  .panel > .ph { --w: 236px; order: 2; margin-top: 16px; margin-bottom: -150px; }
+  .chip { position: static; order: 1; margin: 4px; font-size: 13px; padding: 6px 12px 6px 6px; }
+  .chip__ic { width: 24px; height: 24px; }
+  .panel:has(.chip) { flex-flow: row wrap; justify-content: center; align-content: flex-start; }
+  .panel:has(.chip) > .ph { flex-basis: auto; margin-left: calc(50% - 118px); margin-right: calc(50% - 118px); }
+  .panel--logos { padding: 32px 16px; }
+  .logos { grid-template-columns: repeat(4, 52px); gap: 20px 24px; }
+  .logos img { width: 52px; height: 52px; }
+  .kinds { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .kind { padding: 18px; }
+  .why { grid-template-columns: minmax(0, 1fr); }
+  .foot__in { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+  .foot__copy { justify-self: center; }
+}
+@media (max-width: 480px) {
+  .quotes { grid-template-columns: minmax(0, 1fr); }
+  .kind { padding: 16px; } .kind h3 { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* =========================================================
+   Votre boutique : deux écrans de la vraie boutique Atelier Démo,
+   l'accueil un peu en retrait, les produits devant, et l'adresse
+   de la boutique posée au-dessus, comme dans un navigateur.
+   ========================================================= */
+.panel--duo { height: clamp(460px, 40vw, 560px); padding-top: 92px; background: radial-gradient(60% 70% at 50% 62%, #FFFFFF 0%, rgba(255,255,255,0) 70%), linear-gradient(180deg, #EAF2FF 0%, #F4F8FF 100%); }
+.duo { position: relative; display: flex; align-items: flex-start; justify-content: center; gap: 28px; }
+.duo .ph { --w: clamp(230px, 18vw, 262px); }
+.duo .ph--back { margin-top: 44px; opacity: .96; }
+.addr { position: absolute; left: 50%; top: -52px; z-index: 5; display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 16px 0 12px; translate: -50% 0; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: 0 0 0 1px rgba(24,24,27,.06), 0 12px 28px -16px rgba(16,36,74,.35); font-size: 13px; color: var(--text); white-space: nowrap; }
+.addr b { font-weight: 400; color: var(--muted); }
+.addr svg { flex: none; width: 13px; height: 13px; fill: none; stroke: #16A36A; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.panel--duo .chip--tr { right: 8%; top: 32%; }
+.panel--duo .chip--bl { left: 7%; bottom: 26%; }
+@media (max-width: 760px) {
+  .panel--duo { padding-top: 20px; }
+  .panel--duo .duo { order: 2; flex-basis: 100%; margin-top: 56px; }
+  .duo .ph--back { display: none; }
+  .duo .ph { --w: 236px; margin-bottom: -150px; }
+  .addr { top: -44px; height: 30px; font-size: 12px; }
+  .panel--duo .chip { margin: 3px; padding: 5px 11px 5px 5px; font-size: 12px; }
+  .panel--duo .chip__ic { width: 22px; height: 22px; }
+}
+
+/* le « z » d'Urbanist paraît plus gras que les autres lettres : on l'allège dans les titres */
+.lz { font-weight: 330; }
+
+/* Panneaux photo : la photo de campagne remplit le panneau, son fond se confond avec lui */
+.panel--photo { height: clamp(440px, 44vw, 600px); padding: 0; background: #EAF4FE; }
+.panel--photo-grey { background: #EDEFF1; }
+.scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.panel--photo .chip--tl, .panel--photo .chip--ml, .panel--photo .chip--bl { left: 5%; }
+.panel--photo .chip--tr, .panel--photo .chip--mr, .panel--photo .chip--br { right: 5%; left: auto; }
+.panel--photo .chip--tl { top: 20%; } .panel--photo .chip--ml { top: 47%; } .panel--photo .chip--bl { bottom: 20%; }
+.panel--photo .chip--tr { top: 16%; } .panel--photo .chip--mr { top: 47%; } .panel--photo .chip--br { bottom: 24%; }
+#analytics .chip--tr { top: 8%; }
+@media (max-width: 760px) {
+  .panel--photo { height: auto; max-height: none; padding: 16px 16px 0; }
+  .panel--photo .chip { position: static; }
+  .scene { position: relative; inset: auto; order: 2; flex: 0 0 auto; max-width: none; width: calc(100% + 32px); height: auto; margin: 14px -16px 0; aspect-ratio: 4 / 5; object-position: var(--mpos) 50%; }
+}
+@media (max-width: 760px) { .scene { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%); mask-image: linear-gradient(to bottom, transparent 0, #000 14%); } }
+
+
+/* Encart net posé sur la photo : la vraie interface, à taille lisible, dans un écrin à double bord */
+.focus { position: absolute; z-index: 3; top: 50%; translate: 0 -50%; width: clamp(240px, 24vw, 300px); margin: 0; }
+.focus--r { right: 5%; } .focus--l { left: 6%; }
+.focus__in { display: block; padding: 6px; border-radius: 22px; background: rgba(255,255,255,.72); box-shadow: 0 0 0 1px rgba(24,24,27,.05), 0 2px 4px rgba(16,36,74,.05), 0 30px 60px -28px rgba(16,36,74,.35); }
+.focus__in img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 0 0 1px rgba(24,24,27,.06); }
+.focus figcaption { margin-top: 14px; font-size: 13px; line-height: 18px; color: var(--text); text-align: center; }
+/* la photo glisse vers la gauche quand l'encart a besoin de place à droite (le fond se confond avec le panneau) */
+.panel--shift .scene { left: -11%; width: 111%; }
+@media (prefers-reduced-motion: no-preference) {
+  .focus { transition: translate .9s cubic-bezier(.22,1,.36,1); }
+  .panel--photo:hover .focus { translate: 0 calc(-50% - 4px); }
+}
+@media (max-width: 760px) {
+  .panel--photo { padding: 0 0 24px; }
+  .panel--shift .scene { left: auto; width: 100%; }
+  .panel--photo .scene { margin: 0; width: 100%; -webkit-mask-image: none; mask-image: none; }
+  .focus { position: relative; top: auto; right: auto; left: auto; translate: none; order: 3; width: min(300px, 84%); margin: -110px auto 0; }
+  .panel--photo:hover .focus { translate: none; }
+}
+/* les visages et les téléphones sont dans le haut des photos : on cadre par le haut */
+#revenus .scene, #affiliation .scene, #analytics .scene { object-position: 50% 0; }
+.focus figcaption { text-wrap: balance; }
+@media (max-width: 760px) {
+  #revenus .scene, #affiliation .scene, #analytics .scene, #vitrine .scene { object-position: var(--mpos) 0; }
+  .focus { width: min(280px, 78%); margin-top: -72px; }
+}
+@media (max-width: 760px) {
+  /* le bas de la photo se fond dans le panneau, sous l'encart */
+  .panel--photo .scene { -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%); mask-image: linear-gradient(to bottom, #000 72%, transparent 100%); }
+}
+/* l'encart de la boutique montre la couverture : il est plus haut, donc un peu plus étroit */
+#vitrine .focus { width: clamp(220px, 20vw, 256px); }
+@media (max-width: 760px) { #vitrine .focus { width: min(250px, 72%); } }
+/* la légende reste sur une ligne, centrée sous l'encart même si elle déborde un peu */
+.focus figcaption { display: flex; justify-content: center; white-space: nowrap; }
+
+/* Barre d'état iOS exacte (iPhone à Dynamic Island, 393 pt de large) : 54 pt de haut,
+   l'heure centrée dans l'oreille gauche, les icônes dans l'oreille droite, SF Pro semi-gras 17 pt */
+.ph__bar { height: calc(var(--w) * .1374); padding: 0; justify-content: space-between; }
+.ph__bar b { width: calc(var(--w) * .341); text-align: center; padding-top: calc(var(--w) * .012); font-size: calc(var(--w) * .0433); letter-spacing: calc(var(--w) * -.00104); font-feature-settings: "tnum"; }
+.ph__sys { width: calc(var(--w) * .341); justify-content: center; padding-top: calc(var(--w) * .012); gap: calc(var(--w) * .0153); }
+.ph__sys svg { width: calc(var(--w) * .0433); height: calc(var(--w) * .028); }
+.ph__sys svg:nth-child(2) { width: calc(var(--w) * .039); }
+.ph__sys .ph__bat { width: calc(var(--w) * .0695); height: calc(var(--w) * .033); }
+.ph__screen img { top: calc(var(--w) * .1374); }
+.ph__island { top: calc(var(--w) * .028); width: calc(var(--w) * .3206); height: calc(var(--w) * .0941); }
+
+/* Mockups photo-réalistes : l'image remplit le panneau à ses proportions exactes, sans recadrage */
+.panel--mock { height: auto; aspect-ratio: 1672 / 941; padding: 0; display: block; }
+.panel--mock-blue { background: #EAF4FE; }
+.panel--mock-grey { background: #F5F4F7; }
+.panel--mock-yellow { background: #FDF3D9; }
+.scene--mock { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.panel--after { margin-top: 20px; }
+/* les pastilles passent sous le texte, en une rangée : le visuel reste dégagé */
+.chiprow { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.chiprow .chip { position: static; }
+@media (max-width: 760px) {
+  .panel--mock { aspect-ratio: 4 / 5; max-height: none; padding: 0; display: block; }
+  .panel--notif { aspect-ratio: 16 / 11; }
+  .scene--mock { object-position: var(--mpos) 50%; }
+  .chiprow { gap: 6px; margin-top: 22px; }
+  .chiprow .chip { margin: 0; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HERO. Le texte de mepaye.com, centré, puis une scène symétrique :
+   la boutique au centre d'une arche entière, la vente qui tombe au-dessus,
+   l'acheteur à gauche et la créatrice à droite, à égale distance.
+   Le tout tient dans le premier écran.
+   ───────────────────────────────────────────────────────────── */
+.hero { position: relative; overflow: hidden; text-align: center; }
+.hero__in { display: flex; flex-direction: column; align-items: center; padding-top: clamp(36px, 7vh, 88px); }
+.hero__t { font-family: var(--display); font-weight: 400; font-size: clamp(44px, 4.4vw, 64px); line-height: 1.04; letter-spacing: -.03em; color: var(--ink); }
+.hero__p { margin-top: 14px; max-width: 32rem; font-size: 16px; line-height: 24px; color: var(--text); }
+.hero__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 26px; }
+.hero__fine { margin-top: 12px; font-size: 13px; line-height: 20px; color: var(--muted); }
+@media (min-width: 761px) { .hero__t br { display: none; } }
+
+.hero__art { margin-top: clamp(24px, 4vh, 44px); padding: 0 16px 56px; }
+/* largeur de la scène : ce qui reste de l'écran sous le texte, en gardant ses proportions */
+.stage { position: relative; margin: 0 auto; container-type: inline-size; aspect-ratio: 100 / 62;
+  width: clamp(500px, calc((100svh - 340px) * 1.6), 880px); max-width: 100%; }
+.stage > * { position: absolute; }
+.stage__arch { left: 6cqw; right: 6cqw; bottom: 0; height: 60cqw; border-radius: 44cqw 44cqw 0 0;
+  background: linear-gradient(180deg, #E3EDFF 0%, #EEF4FF 50%, #F8FBFF 100%); box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(8,102,255,.05); }
+.stage__floor { left: 0; right: 0; bottom: -1.2cqw; height: 2.4cqw; border-radius: 50%; background: radial-gradient(closest-side, rgba(16,36,74,.10), rgba(16,36,74,0)); }
+.stage__phone { left: 50%; bottom: 0; width: 21cqw; height: auto; translate: -50% 0; z-index: 2; }
+.stage__p { z-index: 3; height: auto; }
+.stage__p--buyer { left: 7.5cqw; bottom: -3.3cqw; width: 31cqw; }
+.stage__p--seller { left: 61.5cqw; bottom: 0; width: 17.6cqw; }
+.stage__sh { z-index: 1; height: 2.2cqw; border-radius: 50%; background: radial-gradient(closest-side, rgba(16,36,74,.22), rgba(16,36,74,0)); }
+.stage__sh--phone { left: 39cqw; width: 22cqw; bottom: -.6cqw; }
+.stage__sh--buyer { left: 15.5cqw; width: 16cqw; bottom: -.7cqw; }
+.stage__sh--shoes { left: 26.5cqw; width: 14cqw; bottom: -4.3cqw; height: 2cqw; }
+.stage__sh--seller { left: 61.5cqw; width: 18cqw; bottom: -.6cqw; }
+/* la vente tombe au-dessus de la boutique, centrée sur le téléphone */
+.notifs { top: 3.5cqw; left: 50%; width: 34cqw; height: 8cqw; translate: -50% 0; margin: 0; padding: 0; list-style: none; z-index: 4; text-align: left; }
+.notif { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 1.1cqw; padding: 1.1cqw 1.3cqw; border-radius: 1.8cqw; background: #fff;
+  box-shadow: 0 1px 2px rgba(24,24,27,.06), 0 1.6cqw 3.2cqw -1.4cqw rgba(16,36,74,.28), inset 0 0 0 1px rgba(24,24,27,.04);
+  }
+.notif__app { flex: none; display: grid; place-items: center; width: 3.8cqw; height: 3.8cqw; border-radius: 1cqw; background: #fff; box-shadow: inset 0 0 0 1px rgba(24,24,27,.08); }
+.notif__app img { width: 2.6cqw; height: auto; }
+.notif__txt { flex: 1; min-width: 0; display: grid; gap: .2cqw; }
+.notif__top { display: flex; justify-content: space-between; gap: 1cqw; font-size: max(11.5px, 1.35cqw); color: var(--ink); }
+.notif__top b { font-weight: 500; } .notif__top i { font-style: normal; color: var(--muted); }
+.notif__msg { font-size: max(11px, 1.3cqw); line-height: 1.35; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notif__pm { flex: none; width: 3cqw; height: 3cqw; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px rgba(24,24,27,.08); }
+/* mobile : le téléphone au centre, la créatrice à sa droite, la vente au-dessus */
+@media (max-width: 640px) {
+  .hero__t { font-size: 44px; }
+  .hero__ctas .btn { height: 46px; }
+  .hero__art { margin-top: 40px; padding: 0 16px 40px; }
+  .stage { width: 100%; aspect-ratio: 100 / 118; }
+  .stage__arch { left: 4cqw; right: 4cqw; height: 104cqw; border-radius: 46cqw 46cqw 0 0; }
+  .stage__phone { width: 40cqw; }
+  .stage__p--buyer, .stage__sh--buyer, .stage__sh--shoes { display: none; }
+  .stage__p--seller { left: 66cqw; width: 30cqw; }
+  .stage__sh--phone { left: 29cqw; width: 42cqw; } .stage__sh--seller { left: 66cqw; width: 30cqw; }
+  .notifs { top: 3cqw; width: 88cqw; height: 15cqw; }
+  .notif { gap: 2.6cqw; padding: 2.6cqw 3cqw; border-radius: 4.4cqw; }
+  .notif__app { width: 9cqw; height: 9cqw; border-radius: 2.4cqw; } .notif__app img { width: 6cqw; }
+  .notif__top, .notif__msg { font-size: 12px; }
+  .notif__pm { width: 6.6cqw; height: 6.6cqw; }
+}
+/* la notification garde une taille lisible sur les petites scènes, le message n'est jamais coupé */
+.notifs { width: max(34cqw, 280px); }
+.notif__msg { white-space: normal; overflow: visible; }
+.notif__top { font-size: max(12.5px, 1.35cqw); } .notif__msg { font-size: max(12px, 1.3cqw); }
+.notif__app { width: max(3.8cqw, 34px); height: max(3.8cqw, 34px); border-radius: max(1cqw, 9px); } .notif__app img { width: max(2.6cqw, 22px); }
+.notif__pm { width: max(3cqw, 26px); height: max(3cqw, 26px); }
+.notif { gap: max(1.1cqw, 10px); padding: max(1.1cqw, 10px) max(1.3cqw, 12px); border-radius: max(1.8cqw, 16px); }
+.stage { width: clamp(500px, calc((100svh - 380px) * 1.6), 880px); max-width: 100%; }
+@media (max-width: 640px) {
+  .stage { width: 100%; }
+  .notifs { width: 90cqw; }
+  .stage__p--seller, .stage__sh--seller { left: 63cqw; }
+}
+/* un peu d'air entre la notification et le haut du téléphone, à toutes les tailles */
+@media (min-width: 641px) { .stage { aspect-ratio: 100 / 67; width: clamp(500px, calc((100svh - 380px) * 1.5), 860px); } }
+/* le message tient sur une ligne */
+@media (min-width: 641px) { .notifs { width: max(42cqw, 330px); } .notif__msg { white-space: nowrap; } }
+
+/* mobile : chaque mockup est recadré autour de ses téléphones, jamais à travers.
+   Le cadre suit la largeur réelle du groupe de téléphones, avec une marge égale de chaque côté. */
+@media (max-width: 760px) {
+  #boutique .panel--mock { aspect-ratio: 5 / 6; }
+  #boutique .scene--mock { object-position: 47% 50%; }
+  #marques .panel--mock { aspect-ratio: 5 / 4; }
+  #marques .scene--mock { object-position: 49% 50%; }
+  #creation .panel--mock { aspect-ratio: 1 / 1; }
+  #creation .scene--mock { object-position: 80% 50%; }
+  .panel--notif { aspect-ratio: 16 / 11; }
+  .panel--notif .scene--mock { object-position: 51% 0; }
+}
+
+/* Apparition au défilement : un léger fondu vers le haut, une seule fois, section par section.
+   Le titre arrive d'abord, puis le visuel. Rien dans le hero. Rien si le mouvement est réduit. */
+.rv .rv-i { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); transition-delay: var(--rv-d, 0s); }
+.rv .rv-i.is-in { opacity: 1; transform: none; }
+.rv .panel.rv-i { transform: translateY(24px) scale(.985); }
+.rv .panel.rv-i.is-in { transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv .rv-i, .rv .panel.rv-i { opacity: 1; transform: none; transition: none; } }
+/* les règles mobiles des photos de section ne s'appliquent pas aux mockups */
+@media (max-width: 760px) {
+  .scene--mock { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; margin: 0; aspect-ratio: auto; -webkit-mask-image: none; mask-image: none; }
+}
+
+/* « Plusieurs marques » : trois créateurs, chacun dans une arche entière, et sous chacun
+   un extrait net de sa boutique, lisible, aux couleurs de sa marque */
+.brands { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.6vw, 36px); max-width: 1060px; margin: 56px auto 0; padding: 0; }
+.brand { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.brand__arch { position: relative; width: 100%; aspect-ratio: 4 / 5; margin: 0; overflow: hidden; border-radius: 50% 50% 0 0 / 40% 40% 0 0; background: #DCEBFE; }
+.brand__arch img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.brand__card { position: relative; z-index: 1; width: 80%; margin-top: -24%; padding: 5px; border-radius: 20px; background: rgba(255,255,255,.86);
+  box-shadow: 0 0 0 1px rgba(24,24,27,.05), 0 2px 4px rgba(16,36,74,.05), 0 24px 48px -24px rgba(16,36,74,.35); }
+.brand__card img { display: block; width: 100%; height: auto; border-radius: 15px; box-shadow: 0 0 0 1px rgba(24,24,27,.06); }
+.brand__n { margin-top: 18px; font-family: var(--display); font-size: 18px; font-weight: 500; line-height: 24px; color: var(--ink); }
+.brand__d { margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--muted); }
+@media (max-width: 760px) {
+  .brands { display: flex; gap: 14px; margin: 36px -16px 0; padding: 0 16px 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .brands::-webkit-scrollbar { display: none; }
+  .brand { flex: 0 0 76%; scroll-snap-align: center; }
+}
+
+/* Avis : une bande qui défile de droite à gauche, sans fin, à vitesse lente et constante.
+   Les bords se fondent dans le blanc de la page, comme si les avis entraient et sortaient d'une brume.
+   Le survol met en pause ; avec le mouvement réduit, la bande devient défilable au doigt. */
+.marquee { position: relative; display: flex; width: 100vw; margin: 56px calc(50% - 50vw) 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%); }
+.quotes--track { display: flex; flex: none; gap: 16px; margin: 0; padding: 4px 8px 4px 8px; list-style: none; animation: avis 60s linear infinite; }
+.quotes--track .quote { flex: none; width: 300px; min-height: 168px; }
+/* Les étoiles : une rangée dorée discrète, `#F5B000` de la palette, posée sous la citation.
+   Le remplissage partiel se fait par calque : les étoiles du fond en gris clair `#E4E4E7`,
+   la couche du dessus en or, coupée au taux de la note. */
+.quote__stars { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.quote__stars-in { position: relative; display: inline-flex; gap: 3px; color: #E4E4E7; }
+.quote__stars-fill { position: absolute; inset: 0; display: inline-flex; gap: 3px; overflow: hidden; color: #F5B000; white-space: nowrap; }
+.quote__stars .star { flex: none; width: 12px; height: 12px; fill: currentColor; }
+.quote__note { font-size: 11px; font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
+.marquee:hover .quotes--track { animation-play-state: paused; }
+@keyframes avis { to { transform: translateX(-100%); } }
+@media (max-width: 760px) {
+  .marquee { margin-top: 36px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); }
+  .quotes--track { animation-duration: 45s; }
+  .quotes--track .quote { width: 260px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; scrollbar-width: none; -webkit-mask-image: none; mask-image: none; }
+  .quotes--track { animation: none; }
+  .quotes--track[aria-hidden] { display: none; }
+}
+/* plus d'air au-dessus du titre ; la scène se réduit d'autant pour tenir dans le premier écran */
+.hero__in { padding-top: clamp(64px, 11vh, 128px); }
+@media (min-width: 641px) { .stage { width: clamp(480px, calc((100svh - 430px) * 1.5), 860px); } }
+
+/* ─────────────────────────────────────────────────────────────
+   HERO MOBILE. Tout tient dans l'écran visible du téléphone, barres du navigateur comprises :
+   titre sur deux lignes, deux boutons côte à côte, la scène carrée qui prend la hauteur restante,
+   puis « Sans abonnement » sous l'image.
+   ───────────────────────────────────────────────────────────── */
+.hero__fine--m { display: none; }
+@media (max-width: 640px) {
+  .hero__in { padding-top: clamp(14px, 3.2svh, 32px); }
+  .hero__t { font-size: clamp(32px, 9vw, 38px); line-height: 1.06; letter-spacing: -.03em; }
+  .hero__t br { display: inline; }
+  .hero__p { margin-top: 10px; max-width: 300px; font-size: 14px; line-height: 20px; }
+  .hero__ctas { flex-wrap: nowrap; gap: 8px; margin-top: 18px; }
+  .hero__ctas .btn { height: 44px; padding: 0 16px; font-size: 14px; white-space: nowrap; }
+  .hero__in > .hero__fine { display: none; }
+  .hero__fine--m { display: block; margin-top: 12px; text-align: center; }
+  .hero__art { margin-top: clamp(12px, 2.6svh, 24px); padding: 0 16px clamp(14px, 3svh, 28px); }
+  /* scène carrée : sa taille suit la hauteur qui reste sous les boutons */
+  .stage { aspect-ratio: 1 / 1; width: clamp(250px, calc(100svh - 340px), 100%); }
+  .stage__arch { left: 3cqw; right: 3cqw; height: 90cqw; border-radius: 47cqw 47cqw 0 0; }
+  .stage__phone { width: 35cqw; left: 44%; }
+  .stage__p--seller { left: 64cqw; width: 26cqw; }
+  .stage__sh--phone { left: 27cqw; width: 34cqw; }
+  .stage__sh--seller { left: 64cqw; width: 26cqw; }
+  .notifs { top: 0; width: 94cqw; }
+  .notif { gap: 2.4cqw; padding: 2.2cqw 2.8cqw; border-radius: 4.2cqw; }
+  .notif__app { width: 9cqw; height: 9cqw; border-radius: 2.4cqw; } .notif__app img { width: 6cqw; }
+  .notif__top, .notif__msg { font-size: 12px; }
+  .notif__msg { white-space: nowrap; }
+  .notif__pm { width: 7cqw; height: 7cqw; }
+}
+@media (max-width: 370px) { .hero__ctas .btn { padding: 0 13px; font-size: 13px; } }
+
+/* notification : le format exact de l'app (icône, titre en gras, « maintenant », une ligne de texte) */
+.notif__top { align-items: baseline; }
+.notif__top b { font-weight: 600; color: #000; white-space: nowrap; }
+.notif__top i { flex: none; }
+.notif__msg { color: #1C1C1E; }
+/* mobile : le hero occupe exactement l'écran visible sous la barre, et son contenu y est centré verticalement */
+@media (max-width: 640px) {
+  .hero { display: flex; flex-direction: column; justify-content: center; min-height: calc(100svh - 52px); padding: 12px 0 8px; }
+  .hero__in { padding-top: 0; }
+  .hero__art { padding-bottom: 0; }
+}
+/* grands téléphones : l'espace libre va à l'image (plus haute), pas au vide autour */
+@media (max-width: 640px) and (min-height: 740px) {
+  .stage { width: 100%; aspect-ratio: 100 / 118; }
+  .stage__arch { height: 108cqw; border-radius: 47cqw 47cqw 0 0; }
+  .stage__phone { width: 42cqw; left: 43%; }
+  .stage__p--seller, .stage__sh--seller { left: 64cqw; width: 30cqw; }
+  .stage__sh--phone { left: 22cqw; width: 42cqw; }
+}
+@media (max-width: 640px) and (min-height: 860px) {
+  .stage { aspect-ratio: 100 / 128; }
+  .stage__arch { height: 118cqw; }
+  .stage__phone { width: 45cqw; }
+  .stage__p--seller, .stage__sh--seller { width: 32cqw; }
+}
+/* écarts réguliers entre les blocs, proportionnés à la hauteur de l'écran */
+@media (max-width: 640px) {
+  .hero__p { margin-top: clamp(8px, 1.4svh, 14px); }
+  .hero__ctas { margin-top: clamp(16px, 2.6svh, 26px); }
+  .hero__art { margin-top: clamp(16px, 2.6svh, 26px); }
+  .hero__fine--m { margin-top: clamp(10px, 1.6svh, 16px); }
+}
+/* la scène des grands téléphones ne dépasse jamais l'écran, même sur un téléphone large et peu haut */
+@media (max-width: 640px) and (min-height: 740px) { .stage { width: min(100%, calc((100svh - 330px) / 1.18)); } }
+@media (max-width: 640px) and (min-height: 860px) { .stage { width: min(100%, calc((100svh - 330px) / 1.28)); } }
+
+/* titres un peu plus affirmés : Urbanist medium, sans aller jusqu'au gras */
+.hero__t, .sh__t, .final__t { font-weight: 500; }
+.lz { font-weight: 430; }
+/* mobile : « Créez. Vendez. Encaissez. » sur une seule ligne, à la largeur de l'écran */
+@media (max-width: 640px) { .hero__t { white-space: nowrap; font-size: 8vw; } }
+
+/* ─────────────────────────────────────────────────────────────
+   HERO façon Apple : une tuile gris très clair, un titre, une phrase, une ligne discrète,
+   deux boutons pilule sobres (plein / contour), puis l'image. Peu de texte, beaucoup d'air.
+   ───────────────────────────────────────────────────────────── */
+.btn { box-shadow: none; font-weight: 400; transition: background-color .2s ease, color .2s ease; }
+.btn:hover { box-shadow: none; background: #0A5BE0; }
+.btn--ghost { background: transparent; box-shadow: inset 0 0 0 1px var(--blue); }
+.btn--ghost:hover { background: var(--blue); color: #fff; box-shadow: inset 0 0 0 1px var(--blue); }
+
+.hero { background: #F5F5F7; }
+.hero__t { font-size: clamp(40px, 4.6vw, 64px); line-height: 1.07; letter-spacing: -.025em; white-space: nowrap; }
+.hero__p { margin-top: 10px; max-width: none; font-size: clamp(19px, 1.7vw, 26px); line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
+.hero__fine { margin-top: 8px; font-size: clamp(14px, 1.2vw, 17px); line-height: 1.4; color: #6E6E73; }
+.hero__ctas { margin-top: 22px; gap: 16px; }
+.hero__ctas .btn { height: 44px; padding: 0 22px; font-size: 17px; letter-spacing: -.01em; }
+.stage__arch { background: linear-gradient(180deg, #E6EFFF 0%, #EEF4FF 55%, #F5F5F7 100%); box-shadow: none; }
+@media (max-width: 640px) {
+  .hero__t { font-size: 8vw; }
+  .hero__p { margin-top: 6px; font-size: 18px; }
+  .hero__fine { margin-top: 4px; font-size: 14px; }
+  .hero__in > .hero__fine { display: block; }
+  .hero__ctas { margin-top: clamp(16px, 2.4svh, 22px); gap: 12px; }
+  .hero__ctas .btn { height: 40px; padding: 0 18px; font-size: 16px; }
+}
+.hero__p br.m { display: none; }
+@media (max-width: 640px) { .hero__p br.m { display: inline; } .hero__p { line-height: 1.3; } }
+
+/* notification : une petite bannière posée sur l'image, en haut à droite du téléphone,
+   comme si elle venait de tomber sur l'écran de la créatrice. Elle ne sert plus de bandeau. */
+.notifs { top: 15cqw; left: 56cqw; width: 26cqw; min-width: 0; height: auto; translate: none; }
+.notif { position: relative; gap: .9cqw; padding: .9cqw 1.1cqw; border-radius: 1.6cqw; background: rgba(255,255,255,.94);
+  -webkit-backdrop-filter: blur(12px) saturate(1.6); backdrop-filter: blur(12px) saturate(1.6);
+  box-shadow: 0 .4cqw 1.6cqw rgba(16,36,74,.12), 0 0 0 1px rgba(24,24,27,.05); }
+.notif__app { width: 2.8cqw; height: 2.8cqw; min-width: 0; border-radius: .7cqw; } .notif__app img { width: 1.9cqw; }
+.notif__top { font-size: max(9px, 1.05cqw); gap: .6cqw; } .notif__msg { font-size: max(9px, 1.05cqw); white-space: nowrap; }
+.notif__top i { font-size: .92em; }
+.notifs, .notif, .notif__app, .notif__top, .notif__msg { max-width: none; }
+@media (max-width: 640px) {
+  .notifs { top: 8cqw; left: 50cqw; right: auto; width: 47cqw; }
+  .notif { gap: 1.6cqw; padding: 1.6cqw 2cqw; border-radius: 3cqw; }
+  .notif__app { width: 6cqw; height: 6cqw; border-radius: 1.6cqw; } .notif__app img { width: 4.2cqw; }
+  .notif__top, .notif__msg { font-size: 2.6cqw; }
+}
+/* la bannière prend la largeur de son texte, jamais plus, et ne déborde pas */
+.notifs { width: max-content; }
+.notif__txt { flex: none; }
+@media (max-width: 640px) {
+  .notifs { left: auto; right: 2cqw; top: 6cqw; width: max-content; }
+  .notif__top, .notif__msg { font-size: max(10px, 2.9cqw); }
+}
+@media (min-width: 641px) { .notif__top, .notif__msg { font-size: max(11px, 1.2cqw); } .notifs { left: 55cqw; top: 13cqw; } }
+
+/* textes du hero d'origine, à leur place d'origine ; seuls le titre (une ligne) et les boutons changent */
+.hero { background: #fff; }
+.stage__arch { background: linear-gradient(180deg, #E3EDFF 0%, #EEF4FF 50%, #F8FBFF 100%); }
+.hero__p { margin-top: 14px; max-width: 32rem; font-size: 16px; line-height: 24px; letter-spacing: 0; color: var(--text); }
+.hero__ctas { margin-top: 26px; }
+.hero__fine { margin-top: 12px; font-size: 13px; line-height: 20px; color: var(--muted); }
+@media (max-width: 640px) {
+  .hero__p { margin-top: clamp(8px, 1.4svh, 14px); max-width: 300px; font-size: 14px; line-height: 20px; }
+  .hero__in > .hero__fine { display: none; }
+  .hero__fine--m { display: block; margin-top: clamp(10px, 1.6svh, 16px); }
+  .hero__ctas { margin-top: clamp(16px, 2.6svh, 26px); }
+}
+
+/* avis : une seule bande, cadres identiques, éléments alignés
+   (la note passe au-dessus de la citation, l'auteur calé en bas des cartes) */
+.marquee--quotestop, .marquee--quotesbottom { display: none; } /* modificateurs abandonnés */
+.quote { gap: 0; padding: 26px; border-radius: 20px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); justify-content: flex-start; }
+.quote blockquote { margin-top: 0; min-height: 48px; font-family: var(--display); font-weight: 500; letter-spacing: -.012em; font-size: 16px; line-height: 24px; color: var(--ink); }
+.quote__stars { margin-top: 12px; }
+.quote__who { margin-top: auto; padding-top: 12px; }
+.quotes--track { gap: 18px; padding: 14px 9px; }
+.quotes--track .quote { width: 320px; min-height: 220px; }
+@media (max-width: 760px) {
+  .quote { padding: 18px; }
+  .quote blockquote { font-size: 15px; line-height: 22px; }
+  .quotes--track .quote { width: 264px; min-height: 196px; }
+}
+
+/* garde-fou horizontal : aucun élément n'a le droit de donner une largeur à la page,
+   quel que soit le zoom ou l'appareil (100vw des étoiles de fenêtre, carrousel, etc.) */
+html, body { overflow-x: clip; }
+.marquee { width: 100%; margin-left: max(-24px, calc(50% - 50vw)); margin-right: max(-24px, calc(50% - 50vw)); }
