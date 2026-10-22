@@ -419,7 +419,7 @@ button, summary { font: inherit; color: inherit; }
   #marques .panel--mock { aspect-ratio: 5 / 4; }
   #marques .scene--mock { object-position: 49% 50%; }
   #creation .panel--mock { aspect-ratio: 1 / 1; }
-  #creation .scene--mock { object-position: 80% 50%; }
+  #creation .scene--mock { object-position: 47% 40%; }
   .panel--notif { aspect-ratio: 16 / 11; }
   .panel--notif .scene--mock { object-position: 51% 0; }
 }
@@ -674,3 +674,7 @@ html, body { overflow-x: clip; }
 /* l'ornement de la citation : un guillemet arrondi, très clair, calé en haut à droite */
 .quote > .quote__mark { top: 22px; right: 22px; width: 44px; height: 37px; font-size: 0; fill: #EAF1FF; }
 @media (max-width: 760px) { .quote > .quote__mark { top: 18px; right: 18px; width: 36px; height: 30px; } }
+
+/* Création : photo par-dessus l'épaule, le téléphone est dans le haut de l'image */
+#creation .scene--mock { object-position: 50% 30%; }
+@media (max-width: 760px) { #creation .scene--mock { object-position: 47% 30%; } }

@@ -175,7 +175,7 @@ L'ordre et les textes sont ceux de mepaye.com.
 | 3 | Le paiement, sous toutes ses formes. | Gros plan iPhone avec la notification, puis la grille des 12 logos |
 | 4 | Une identité. Plusieurs marques. | Trois arches avec trois créateurs (Studio Aïcha, Wellness Pro, Digital Habit), chacun montrant sa boutique, et une carte lisible dessous ; défilement horizontal sur téléphone |
 | 5 | Votre argent, sur votre Mobile Money. | Photo d'une créatrice qui montre son solde, avec l'encart « Solde disponible » |
-| 6 | Décrivez votre idée. Mepaye rédige. | Main tenant un iPhone, avec le formulaire de génération d'ebook par l'IA, sur fond bleu pâle |
+| 6 | Décrivez votre idée. Mepaye rédige. | Photo par-dessus l'épaule, deux mains tenant un iPhone avec le vrai formulaire « Générer un ebook avec l'IA » (en-tête de l'app, champs remplis) ; mur beige d'origine passé au bleu des panneaux par `outils/images/fond-bleu.py` |
 | 7 | Un seul endroit. Tous vos produits. | Grille de 9 types de produits |
 | 8 | **API Paiement** : « Gardez votre site. Mepaye encaisse. » (remplace « Une boutique à votre image. », doublon de la section 2, à la demande du client le 22/10/2026) | iPhone posé à plat (`mockups/paiement.webp`) avec la vraie page de paiement hébergée `pay.mepaye.com` (ebook à 3 500 XOF, Studio Aïcha), encart net des moyens de paiement (`focus/paiement.webp`), puces « Clé API » et « Mode test » |
 | 9 | Vos clients deviennent vos vendeurs. | Deux amies et l'écran d'affiliation, avec l'encart du niveau Argent |

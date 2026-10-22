@@ -155,7 +155,7 @@ body = f'''  <a class="skip" href="#contenu">Aller au contenu</a>
   scene('revenus', 'Une créatrice montre fièrement son solde Mepaye sur son téléphone', '41%') + focus('solde', 640, 692, 'Solde disponible : 2 451 350 XOF, avec le bouton Retirer mes gains', 'Mobile Money · Dès validation · Devise locale', 'r'), 'photo panel--shift',
   extra='<p class="sh__strong">5 % par vente. Zéro abonnement. Zéro frais caché.</p><p class="sh__small">Vous ne payez que quand vous gagnez.</p>')}
 {section('creation', 'Création', 'Décrivez votre idée.<br>Mepaye rédige.', 'Notre IA transforme une simple idée en ebook ou en formation structurée : plan, chapitres, leçons. Vous gardez la main, vous publiez quand vous voulez.',
-  mock('creation', "Une main tient un iPhone qui affiche la génération d'un ebook par l'IA de Mepaye", '80%'), 'mock panel--mock-blue', extra=chiprow(chip('list', '#F5B000', 'Plan', 'tl'), chip('doc', '#5B4FE0', 'Chapitres', 'tr'), chip('cap', '#0866FF', 'Leçons', 'bl'), chip('pen', '#16A36A', 'Rédaction', 'br')))}
+  mock('creation', "Deux mains tiennent un iPhone qui affiche la génération d'un ebook par l'IA de Mepaye", '47%', 3072, 2048), 'mock panel--mock-blue', extra=chiprow(chip('list', '#F5B000', 'Plan', 'tl'), chip('doc', '#5B4FE0', 'Chapitres', 'tr'), chip('cap', '#0866FF', 'Leçons', 'bl'), chip('pen', '#16A36A', 'Rédaction', 'br')))}
     <section class="sec" id="produits" aria-labelledby="produits-t">
       <div class="wrap">
         {head('Ce que vous vendez', 'Un seul endroit. Tous vos produits.', 'Quoi que vous créiez, Mepaye sait le vendre.', 'produits-t')}
