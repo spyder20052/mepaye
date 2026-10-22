@@ -63,32 +63,55 @@ Three identical smartphones arranged like a fanned hand of cards on a seamless v
 ```
 
 ### M4 · La main qui tend le téléphone (Décrivez votre idée)
-**Fichier :** `mockup-creation.png` · **Format :** 16:9, 3 840 × 2 160 px · **Fond :** bleu pâle `#EFF6FF` (le jaune a été refusé).
-- **Orientation à garder (celle du visuel actuel) :** main droite vue paume face à nous, pouce sur le bord gauche, quatre doigts sur le bord droit ; le téléphone basculé vers l'arrière, le haut plus loin que le bas, l'axe penché d'environ 18° (haut vers la gauche) ; on voit le bord inférieur, les haut-parleurs et le port USB-C au premier plan.
-- **Ce qui faisait « IA » dans la version actuelle :** le téléphone est presque deux fois trop grand pour la main (il dépasse la largeur de la paume et la longueur des doigts), effet aggravé par un grand-angle. Le prompt ci-dessous impose les vraies mesures (téléphone 150 × 72 mm, paume d'adulte 85 à 90 mm) et un téléobjectif, pour que la main et le téléphone gardent leur échelle réelle.
-- **Cadrage :** sur téléphone, le site recadre l'image en carré, centré vers la droite. Le sujet doit tenir dans la moitié droite, avec de l'air jusqu'au bord droit ; seul le poignet peut sortir par le bas.
+**Fichier :** `mockup-creation.png` · **Format :** 16:9, 3 840 × 2 160 px · **Fond :** bleu pâle `#EFF6FF`.
+
+**Ce qui n'allait pas dans les versions précédentes :**
+- le téléphone fait presque deux fois la taille de la main ;
+- la caméra est plate et lointaine, l'image ressemble à un rendu 3D ;
+- la main est lisse et cireuse, avec des doigts posés au hasard.
+
+**La direction :** une vraie photo publicitaire, prise par un photographe. La caméra est placée en trois quarts, légèrement sous le téléphone, avec une légère inclinaison qui donne du mouvement. Le téléphone est net, la main garde sa texture et le poignet se perd doucement dans le flou. Tout est à l'échelle réelle.
+
+**Cadrage :** sur téléphone, le site recadre l'image en carré, vers la droite. La main et le téléphone restent dans la moitié droite, avec de l'air jusqu'au bord droit.
 
 ```text
-Realistic close-up photograph of an adult man's right hand holding a smartphone out toward the camera to show its screen, palm facing the camera behind the phone. The thumb rests along the left side frame, its tip reaching about 40 percent of the way up the phone. The four fingers curl around the right side frame, only the fingertips and first joints visible beyond the edge, naturally spaced from the upper third down to the lower right corner. The bottom of the phone rests on the base of the palm near the little finger, the wrist entering the frame from the bottom edge.
+SUBJECT: A professional advertising photograph of an adult man's right hand holding a modern iPhone 17 Pro in natural titanium, no case, presenting its screen toward the camera, like a product hero shot for a tech brand.
 
-True real-world scale, this is critical: the phone is a standard 6.3 inch iPhone, 150 mm tall and 72 mm wide, held by an average adult hand with a palm about 88 mm wide. The phone is slightly narrower than the palm across the knuckles, the phone's height is about the length of the hand from the base of the palm to the fingertips, and the hand clearly wraps around the phone. The phone and the hand are at the same distance from the camera, no forced perspective.
+GRIP: Natural, relaxed one-hand grip. The bottom third of the phone rests in the palm. The thumb lies along the left side frame, bent at the joint, its tip reaching about 40 percent of the phone's height. The index, middle and ring fingers wrap around the right side frame, only their tips and first joints visible beyond the edge, slightly spread, touching the frame with gentle pressure; the little finger supports the bottom right corner. No finger touches the screen.
 
-Orientation: the phone is tilted back about 25 degrees so its top is farther from the camera than its bottom, and its long axis leans about 18 degrees with the top toward the left. The screen faces the camera, all four rounded screen corners fully visible, no finger over the screen. The bottom titanium edge, the speaker holes and the USB-C port are visible in the foreground.
+TRUE SCALE, critical: the phone is 150 mm tall, 72 mm wide, 8.75 mm thick. The hand is an average adult male hand, 190 mm long with a palm 88 mm wide. The phone is slightly narrower than the palm, the top half of the phone rises above the fingers, and the hand clearly wraps around it. The hand and the phone are at the same distance from the camera, no forced perspective.
 
-Shot from about 1.2 meters with a 100mm macro lens, no wide-angle distortion. The hand and phone are placed right of center and fill about 85 percent of the frame height, with clear empty space on the left and a margin on the right; only the wrist is cut by the bottom edge. Seamless pale blue #EFF6FF studio backdrop with a soft gradient toward white at the top. Soft daylight from the top left, gentle shadows in the palm. Natural dark brown skin with real texture: visible pores, fine palm creases, slight unevenness of tone, short clean natural nails, no lotion shine. Anatomically correct hand with exactly five fingers and natural knuckle proportions. Horizontal 16:9.
+CAMERA: Three-quarter view. The camera sits slightly below the phone and about 30 degrees to its left, looking slightly up, shot with a 100mm lens from about 1.3 meters, so there is no wide-angle distortion. The phone is turned so its left titanium side frame and the side buttons are visible, the screen still facing the camera within 25 degrees. A subtle 8 degree dutch tilt with the top of the phone leaning toward the left gives a sense of movement, as if the camera is slowly orbiting around the phone. Focus on the screen and the front of the phone, aperture f/5.6: the fingertips are sharp, the wrist and forearm fall softly out of focus toward the bottom edge.
+
+PHONE ACCURACY: Accurate iPhone 17 Pro proportions, thin uniform black bezels, rounded screen corners matching the frame, Dynamic Island as a small black pill at the top, brushed titanium frame with crisp machined edges and soft specular highlights, correct side buttons, camera plateau not visible. The entire screen is a perfectly flat, uniform, matte chroma green #00FF00 from edge to edge, no reflection, no interface, all four rounded corners fully visible.
+
+HAND REALISM: Dark brown skin with real texture: visible pores, fine creases on the knuckles and the palm, subtle veins on the back of the hand, natural variation of tone between palm and back, short clean natural nails with real cuticles, no lotion shine. Anatomically correct, exactly five fingers, natural knuckle proportions, relaxed tendons.
+
+LIGHT AND SET: Large soft key light from the top left, a white bounce card on the right to open the shadows in the palm, a thin rim light outlining the titanium frame. Seamless pale blue #EFF6FF studio backdrop with a soft gradient toward white at the top, a faint soft shadow behind the hand.
+
+FRAMING: Horizontal 16:9. The hand and phone are placed right of center and fill about 80 percent of the frame height, with clear empty space on the left and a margin on the right; only the forearm is cut by the bottom edge.
+
+STYLE: Shot on a Phase One IQ4 with a 100mm macro lens, natural color, true-to-life skin tones, fine film grain, editorial product photography, photorealistic, not a 3D render.
 ```
 
-**À ajouter à la liste « À exclure » pour ce visuel :**
+**À exclure :**
 
 ```text
-oversized phone, giant phone, tiny hand, small hand, child hand, wide-angle lens, fisheye, forced perspective, phone closer to the camera than the hand, waxy skin, airbrushed skin, plastic skin, glossy skin, overly smooth palm, long fingers, elongated fingers, stiff claw grip, fingers floating off the frame
+oversized phone, giant phone, tiny hand, small hand, child hand, long elongated fingers, extra or missing fingers, fused fingers, claw grip, fingers floating off the frame, finger on the screen, waxy skin, plastic skin, airbrushed skin, glossy skin, wide-angle lens, fisheye, forced perspective, flat frontal view, phone case, curved or warped screen, interface on screen, screen reflection, CGI, 3D render, cartoon, oversaturated, busy background, props, text, logo, watermark
 ```
 
-**Contrôle avant de garder une variante (en plus des règles du § 1) :**
-1. Le téléphone est un peu **moins large que la paume** au niveau des jointures.
-2. Le pouce couvre environ **un tiers de la hauteur** du téléphone.
-3. Les doigts **touchent** le cadre et le contournent ; on ne voit que le bout des quatre doigts.
-4. La peau a du grain (pores, plis de la paume) : si elle paraît lisse ou cireuse, on jette.
+**Selon l'outil :**
+- **Midjourney :** ajoutez `--ar 16:9 --style raw --stylize 50` à la fin. `raw` limite l'effet « image IA ».
+- **ChatGPT ou Gemini :** collez le prompt tel quel, puis demandez une retouche ciblée si un détail cloche (« make the hand 15 % larger relative to the phone »).
+
+**L'astuce qui change tout :** photographiez avec votre propre téléphone une vraie main qui tient un iPhone dans cette pose, de trois quarts et légèrement par en dessous. Joignez cette photo comme **image de référence de pose** avec la mention `Match the exact hand pose, grip and phone-to-hand scale of the reference photo.` Les proportions viennent alors du réel, pas de l'outil.
+
+**Contrôle avant de garder une variante :**
+1. **Échelle :** le téléphone est un peu moins large que la paume, et le pouce couvre environ 40 % de sa hauteur.
+2. **Prise :** les doigts touchent le cadre et le contournent ; on ne voit que le bout de trois doigts à droite.
+3. **Téléphone :** bords fins et réguliers, Dynamic Island petite et centrée, écran vert entier avec ses quatre coins visibles.
+4. **Peau :** du grain, des plis et des pores ; si elle paraît lisse, on jette.
+5. **Netteté :** l'écran et le bout des doigts sont nets, le poignet est flou.
 
 ### M5 · Le gros plan sur la notification (Le paiement)
 **Fichier :** `mockup-notification.png` · **Format :** 16:9, 3 840 × 2 160 px.
