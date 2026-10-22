@@ -136,6 +136,7 @@ Mepaye/
 7. **Illustrations :**
    - de **vraies captures de l'app**, sans données inventées dans le contenant ;
    - on peut enjoliver le **contenu** (soldes, ventes, noms), jamais le **contenant** (l'interface) ;
+   - on ne modifie **jamais** le design ni la structure d'un écran capturé : on peut seulement remplacer des images et corriger un petit défaut visuel ; en voyant un mockup, on doit reconnaître la vraie interface de l'app (rappel du client, 22/10/2026) ;
    - pas de photos de banque d'images : les personnes viennent des images générées par l'utilisateur ;
    - les écrans doivent être **nets et lisibles**.
 8. **Notifications :** reprendre le format exact de l'app, une bannière iOS avec :

@@ -1,16 +1,16 @@
 # Miniatures des produits de Studio Aïcha · prompts
 
-Ces six miniatures remplacent les couvertures à plat (fonds vert et marine avec une icône) dans la liste des produits, dans le mockup « Votre boutique » et dans la boutique de démo. Elles suivent exactement la construction de la couverture déjà faite, « Créer et vendre des produits numériques » (`prompt-couverture-ebook.md`), pour qu'on les voie comme une collection.
+Ces six miniatures remplacent les couvertures à plat (fonds vert et marine avec une icône) dans la liste des produits, dans le mockup « Votre boutique » et dans la boutique de démo. Chaque prompt génère **la miniature complète, texte compris, sans écran vert**, exactement comme la couverture déjà faite, « Créer et vendre des produits numériques » : on la pose telle quelle, sans retouche.
 
-| # | Produit | Type | Prix | Statut |
+| # | Produit | Pastille | Prix | Statut |
 |---|---|---|---|---|
-| 0 | Ebook : créer et vendre des produits numériques | Ebook | 3 500 XOF | **fait** (référence) |
-| 1 | Modèle de facture pour freelance | Template | 2 000 XOF | à générer (visible dans le mockup) |
-| 2 | Guide : lancer sa boutique en ligne | Ebook | 5 000 XOF | à générer (visible dans le mockup) |
-| 3 | Calendrier éditorial trimestriel | Template | 4 500 XOF | à générer (visible dans le mockup) |
-| 4 | Formation courte : vendre en ligne | Formation | 25 000 XOF | à générer |
-| 5 | Formation : tenir sa comptabilité de freelance | Formation | 15 000 XOF | à générer |
-| 6 | Pack de 30 modèles de publications | Template | 7 500 XOF | à générer |
+| 0 | Ebook : créer et vendre des produits numériques | EBOOK | 3 500 XOF | **fait** (référence) |
+| 1 | Modèle de facture pour freelance | TEMPLATE | 2 000 XOF | à générer (visible dans le mockup) |
+| 2 | Guide : lancer sa boutique en ligne | EBOOK | 5 000 XOF | à générer (visible dans le mockup) |
+| 3 | Calendrier éditorial trimestriel | TEMPLATE | 4 500 XOF | à générer (visible dans le mockup) |
+| 4 | Formation courte : vendre en ligne | FORMATION | 25 000 XOF | à générer |
+| 5 | Formation : tenir sa comptabilité de freelance | FORMATION | 15 000 XOF | à générer |
+| 6 | Pack de 30 modèles de publications | TEMPLATE | 7 500 XOF | à générer |
 
 **Priorité :** 1, 2 et 3, les trois visibles dans le mockup de la boutique sur l'accueil.
 
@@ -18,111 +18,92 @@ Ces six miniatures remplacent les couvertures à plat (fonds vert et marine avec
 
 ## 1. La règle de la collection (ce qui ne change jamais)
 
-Chaque miniature a la même construction que la couverture de l'ebook :
+La construction de la référence, à l'identique sur les sept :
 
 ```text
 ┌──────────────────────────────┐
-│ PASTILLE                     │  ← type du produit (je la pose)
-│ Titre                        │  ← 2 ou 3 lignes (je le pose)
-│ du produit                   │
-│                   ┌──────┐   │
-│        objet      │ app  │   │  ← l'écran : une vraie page mepaye
-│         ▟▀▀▀▙     │      │   │
-│         ▌   ▐     └──────┘   │  ← le même socle en arche cobalt
+│ ( PASTILLE )      [bulle]    │  ← pastille cobalt, texte blanc en capitales
+│ Titre en gras     ┌──────┐   │  ← titre marine, 2 ou 3 lignes, à gauche
+│ marine            │écran │✋ │  ← un iPhone en coque cobalt, écran illustré
+│ sur 3 lignes      │      │   │
+│            ▟▀▀▀▀▀▀▀▀▀▙       │  ← le même socle en demi-lune cobalt
 └──────────────────────────────┘
 ```
 
-1. **Le même décor :** fond bleu pâle `#EDF4FF`, lumière de fenêtre venant de la gauche, avec les mêmes ombres douces en diagonale.
-2. **Le même socle :** l'arche cobalt `#0866FF`, toujours en bas à droite, toujours de la même taille.
-3. **Le même téléphone :** iPhone dans une coque cobalt mate, écran en vert chroma. J'y incruste une **vraie page de l'app** : c'est elle qui met mepaye en avant sur chaque miniature.
-4. **Un seul objet par produit,** pour raconter le sujet en un coup d'œil, dans les couleurs de la collection : blanc cassé, cobalt, marine `#10244A`, bleu pâle.
-5. **Un rythme dans la grille :** les miniatures paires ont une main (comme la référence), les impaires montrent le téléphone posé seul sur le socle. Vue en liste, la boutique alterne sans se répéter.
-6. **Le tiers haut gauche reste vide** (45 % de l'image) : j'y pose la pastille et le titre en Urbanist medium marine, nets et identiques d'une miniature à l'autre.
-7. **Aucun texte généré dans l'image.**
+1. **Le texte :** en haut à gauche, une pastille cobalt `#0866FF` avec le type en capitales blanches espacées, puis le titre en gros, dans une linéale géométrique grasse, marine `#10244A`, aligné à gauche.
+2. **Le décor :** fond bleu pâle `#EDF4FF`, lumière de fenêtre venant de la gauche, avec de grandes ombres douces en diagonale sur le mur et le sol blanc.
+3. **Le socle :** une demi-lune cobalt mate, en bas à droite, toujours de la même taille.
+4. **Le téléphone :** un iPhone en coque cobalt, posé debout sur le socle. Son écran montre une **interface illustrée simple** (cartes arrondies, vignettes, traits gris à la place du texte, boutons cobalt), comme sur la référence, avec un dessin propre au sujet.
+5. **La bulle :** une bulle blanche au-dessus du téléphone, avec une icône ronde cobalt et **deux ou trois mots** en marine.
+6. **Le rythme :** les miniatures paires ont une main qui tient le téléphone, comme la référence. Les impaires montrent le téléphone seul sur le socle, avec un objet posé à côté. Vue en liste, la boutique alterne sans se répéter.
+7. **Les couleurs :** cobalt, marine, bleu pâle, blanc et la peau, rien d'autre.
 
 ### Le conseil qui fait la cohérence
 
-Générez les six dans **la même conversation** de votre outil, en joignant à chaque fois la couverture déjà faite (`couverture-ebook-2.png`) comme **image de référence de style**. Ajoutez au début du prompt : `Match the exact lighting, backdrop color, pedestal, phone case and camera of the reference image.`
+Générez les six dans **la même conversation** (ChatGPT ou Ideogram, qui écrivent bien le texte), en joignant chaque fois la couverture déjà faite comme image de référence. Commencez par : `Use the attached cover as the exact style reference: same layout, typography, colors, lighting, pedestal and phone.`
 
 ### Le bloc de style (à coller à la fin de chaque prompt)
 
 ```text
-Square 1:1 premium product cover scene, part of a consistent series, Apple-style minimal product photography. Seamless pale blue #EDF4FF studio backdrop. A smooth matte cobalt blue #0866FF pedestal shaped like a rounded arch stands in the lower right of the frame, always the same size and position. The phone is a modern iPhone in a matte cobalt blue #0866FF case; its screen is a perfectly flat uniform chroma green #00FF00 from edge to edge, no reflection, no interface, all four rounded screen corners fully visible and unobstructed. Soft window light from the left casting gentle diagonal window shadows on the backdrop, soft natural contact shadows. True real-world scale for every object: the phone is 150 mm tall, the pedestal about 120 mm tall. The whole top-left 45 percent of the frame is empty pale blue backdrop, reserved for a title. Color world strictly cobalt blue, navy #10244A, pale blue, off-white and natural skin tones. Shot on a Hasselblad, 80mm, f/5.6, everything tack sharp, clean whites, subtle film grain, no HDR, photographic realism.
+Square 1:1 ebook and course cover thumbnail, part of a consistent series, clean premium design like a top Upwork portfolio thumbnail, photographic realism for the objects. Pale blue #EDF4FF background with soft window light from the left casting large soft diagonal window shadows on the wall and on the white floor. Top-left: a rounded pill label in cobalt blue #0866FF with white uppercase letter-spaced text, then a large title in a bold geometric sans-serif typeface, navy #10244A, left-aligned, tight line spacing. Bottom-right: a matte cobalt blue #0866FF half-moon pedestal, flat side down. A modern iPhone in a matte cobalt blue case stands upright on the pedestal, screen facing the camera, showing a clean minimal illustrated app interface: white and pale blue rounded cards, soft grey lines instead of text, small cobalt buttons. Above the phone, a small white speech-bubble notification card with a round cobalt icon and a short navy text. True real-world scale between the phone, the hand and the objects. Color world strictly cobalt blue, navy, pale blue, white and natural skin tones. Generous empty space, no logo, no other text than the one requested, no clutter.
 ```
 
 ### À exclure (pour toutes)
 
 ```text
-text, letters, numbers, logos, watermark, user interface on screen, screen reflection, oversized phone, tiny hand, extra or fused fingers, distorted hands, waxy or plastic skin, cluttered background, more than one prop, props in other colors, warm orange cast, green, purple, oversaturated, harsh shadows, wide-angle distortion, CGI look, 3D render look
+misspelled text, wrong accents, extra words, gibberish text, logos, watermark, green screen, oversized phone, tiny hand, extra or fused fingers, distorted hands, waxy or plastic skin, cluttered background, more than one prop, props in other colors, warm orange cast, purple, green, oversaturated, harsh shadows, 3D cartoon style
 ```
 
 ---
 
-## 2. Les six scènes
+## 2. Les six prompts
 
-Chaque prompt ci-dessous décrit seulement la scène. Collez ensuite le bloc de style.
+Collez chaque prompt, puis le bloc de style.
 **Fichier :** `photos-a-trier/miniature-<numéro>.png`, carré, 2 048 × 2 048 px minimum.
 
-### 1 · Modèle de facture pour freelance
-- **Pastille :** `TEMPLATE` · **Titre :** « Facture / pour freelance »
-- **Écran incrusté :** la page produit du modèle dans la boutique Studio Aïcha, avec la notification « Une vente ! Mepaye te paye ».
+### 1 · Modèle de facture pour freelance (sans main)
 
 ```text
-The phone stands alone, upright, leaning back slightly against the arch pedestal, screen facing the camera. In front of the pedestal, a single crisp sheet of off-white A5 paper lies flat on the floor at a slight angle, like a printed invoice: a thin cobalt band at the top and a few faint grey lines, no readable text or numbers.
+Pill label text: "TEMPLATE". Title on two lines, exactly: "Facture" / "pour freelance". The phone stands alone on the pedestal. Its screen shows a minimal illustrated invoice: a cobalt header band, two grey lines, a short table of three rows with grey lines, a bold total line and a cobalt button at the bottom. In front of the pedestal, a single crisp sheet of white A5 paper lies flat on the floor, like a printed invoice with a thin cobalt band at the top and faint grey lines, no readable text. Notification bubble text, exactly: "Facture payée !"
 ```
 
-### 2 · Guide : lancer sa boutique en ligne
-- **Pastille :** `EBOOK` · **Titre :** « Lancer sa / boutique / en ligne »
-- **Écran incrusté :** l'accueil de la boutique Studio Aïcha avec ses produits.
+### 2 · Guide : lancer sa boutique en ligne (avec main)
 
 ```text
-A dark-skinned hand with short clean natural nails holds the phone upright from the right side, its bottom edge resting on the arch pedestal, the phone turned slightly toward the camera. The hand is at true adult scale: the phone is slightly narrower than the palm, only the thumb and two fingertips overlap the side frame. Beside the pedestal on the left stands a small off-white paper shopping bag with cobalt rope handles, about 15 cm tall, plain, no print.
+Pill label text: "EBOOK". Title on three lines, exactly: "Lancer sa" / "boutique" / "en ligne". A dark-skinned hand with short clean natural nails holds the phone from the right side, its bottom edge resting on the pedestal, at true adult scale: the phone is slightly narrower than the palm, only the thumb and fingertips overlap the side frame. The screen shows a minimal illustrated online shop: a small store name bar with a round avatar, a large product card with an image placeholder, and a two-column grid of smaller product cards with cobalt buttons. Notification bubble text, exactly: "Boutique en ligne !"
 ```
 
-### 3 · Calendrier éditorial trimestriel
-- **Pastille :** `TEMPLATE` · **Titre :** « Calendrier / éditorial / trimestriel »
-- **Écran incrusté :** la page produit du calendrier dans la boutique.
+### 3 · Calendrier éditorial trimestriel (sans main)
 
 ```text
-The phone stands alone, upright, leaning back slightly against the arch pedestal, screen facing the camera. To the left of the pedestal stands a small off-white desk tent calendar with a navy wire binding, about 12 cm wide, its page showing only a simple grid of empty squares with three squares filled in cobalt, no numbers, no text.
+Pill label text: "TEMPLATE". Title on three lines, exactly: "Calendrier" / "éditorial" / "trimestriel". The phone stands alone on the pedestal. Its screen shows a minimal illustrated monthly calendar: a header with two grey lines, a grid of rounded squares where a few squares hold small cobalt and pale blue post thumbnails, and a cobalt button at the bottom. To the left of the pedestal stands a small white desk tent calendar with a navy wire binding, its page a simple grid of empty squares with three squares filled in cobalt, no numbers. Notification bubble text, exactly: "Post planifié !"
 ```
 
-### 4 · Formation courte : vendre en ligne
-- **Pastille :** `FORMATION` · **Titre :** « Vendre / en ligne »
-- **Écran incrusté :** la page produit de la formation (vidéo et liste des quatre modules).
+### 4 · Formation courte : vendre en ligne (avec main)
 
 ```text
-A dark-skinned hand with short clean natural nails holds the phone horizontally in landscape orientation, resting its lower edge on top of the arch pedestal, as if showing a video lesson to the camera. True adult scale: the phone's width is about the length of the hand's fingers, the thumb rests on the bottom frame without touching the screen. Behind the pedestal, slightly out of focus, a pair of small white wireless earbuds in their open white case.
+Pill label text: "FORMATION". Title on two lines, exactly: "Vendre" / "en ligne". A dark-skinned hand with short clean natural nails holds the phone from the right side, its bottom edge resting on the pedestal, at true adult scale: the phone is slightly narrower than the palm. The screen shows a minimal illustrated video course: a large video thumbnail of a soft blue landscape with a white play button, a thin cobalt progress bar, then a list of four lessons as rounded rows, the first one checked in cobalt. Notification bubble text, exactly: "4 modules vidéo"
 ```
 
-### 5 · Formation : tenir sa comptabilité de freelance
-- **Pastille :** `FORMATION` · **Titre :** « Tenir sa / comptabilité / de freelance »
-- **Écran incrusté :** le portefeuille mepaye (solde disponible et dernières ventes).
+### 5 · Formation : tenir sa comptabilité de freelance (sans main)
 
 ```text
-The phone stands alone, upright, leaning back slightly against the arch pedestal, screen facing the camera. In front of the pedestal lies a closed slim navy hardcover notebook, about A6 size, with a cobalt blue pen placed diagonally on top of it. Clean, orderly, calm.
+Pill label text: "FORMATION". Title on three lines, exactly: "Tenir sa" / "comptabilité" / "de freelance". The phone stands alone on the pedestal. Its screen shows a minimal illustrated finance dashboard: a cobalt card with a large white balance shape and grey lines, a small rising line chart in cobalt, and three rounded rows of transactions with small round icons. In front of the pedestal lies a closed slim navy hardcover notebook with a cobalt pen placed diagonally on top. Notification bubble text, exactly: "Comptes à jour !"
 ```
 
-### 6 · Pack de 30 modèles de publications
-- **Pastille :** `TEMPLATE` · **Titre :** « 30 modèles / de publications »
-- **Écran incrusté :** la page produit du pack, avec l'aperçu des publications.
+### 6 · Pack de 30 modèles de publications (avec main)
 
 ```text
-A dark-skinned hand with short clean natural nails holds the phone upright from the right side, its bottom edge resting on the arch pedestal, the phone turned slightly toward the camera. True adult scale: the phone is slightly narrower than the palm. Behind the phone, three thin square cards about 9 cm wide are fanned out like social media posts, one cobalt, one navy, one off-white, completely plain, no text, no images.
+Pill label text: "TEMPLATE". Title on two lines, exactly: "30 modèles" / "de publications". A dark-skinned hand with short clean natural nails holds the phone from the right side, its bottom edge resting on the pedestal, at true adult scale: the phone is slightly narrower than the palm. The screen shows a minimal illustrated grid of nine square social media posts in cobalt, navy, pale blue and white, each with a simple shape or a soft photo placeholder, no text. Notification bubble text, exactly: "30 modèles prêts"
 ```
 
 ---
 
 ## 3. Avant de garder une variante
 
-1. **Comparez-la à la couverture de référence**, côte à côte : même bleu de fond, même socle, même lumière. Si l'une détonne, on jette.
-2. Le téléphone est **à la bonne échelle** : un peu moins large que la paume quand il y a une main, plus haut que l'objet posé à côté.
-3. L'écran vert est entier, les quatre coins visibles, aucun doigt dessus.
-4. Le tiers haut gauche est **vide**.
-5. Aucun texte, aucun chiffre sur les objets (feuille, calendrier, cartes).
+1. **Le texte est exact,** accents compris : « éditorial », « comptabilité », « modèles », « payée », « planifié », « vidéo », « à jour ». Au moindre mot faux, on régénère : les générateurs se trompent souvent sur les accents.
+2. **Côte à côte avec la référence :** même bleu de fond, même socle, même taille de titre, même place de la pastille. Si l'une détonne, on jette.
+3. Le téléphone est **à la bonne échelle** : un peu moins large que la paume quand il y a une main.
+4. L'écran reste **une illustration simple** (traits gris, cartes, boutons cobalt), sans faux texte illisible.
 
-À réception, je fais le reste :
-1. J'incruste la vraie page mepaye dans chaque écran, en PNG sans perte.
-2. Je pose la pastille et le titre, identiques sur les sept miniatures.
-3. Je remplace les couvertures à plat dans la liste des produits, le mockup « Votre boutique » et la boutique de démo.
-4. Je vous montre le tout en local, sur ordinateur et à 390 px, avant toute mise en ligne.
+À réception, je remplace les couvertures à plat dans la liste des produits, le mockup « Votre boutique » et la boutique de démo, puis je vous montre le tout en local, sur ordinateur et à 390 px.
