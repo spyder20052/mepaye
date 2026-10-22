@@ -39,8 +39,14 @@ ARROW = '<svg aria-hidden="true"><use href="#i-arrow"/></svg>'
 CHEV = '<svg aria-hidden="true"><use href="#i-chev"/></svg>'
 CHECK = '<svg aria-hidden="true"><use href="#i-check"/></svg>'
 
-def cover(kind, v, big=False):
-    """Couverture illustrée à plat, aux couleurs de la boutique."""
+# miniatures photo des produits (assets/covers/<slug>.webp) ; les autres gardent la couverture illustrée
+COVERS = {'formation-courte-vendre-en-ligne', 'modele-facture-freelance', 'guide-lancer-sa-boutique', 'calendrier-editorial-90-jours', 'formation-comptabilite-freelance'}
+def cover_src(slug): return f'assets/covers/{slug}.webp' if slug in COVERS else ''
+
+def cover(kind, v, big=False, slug=None):
+    """Couverture du produit : sa miniature photo si elle existe, sinon l'illustration à plat aux couleurs de la boutique."""
+    if slug in COVERS:
+        return f'<span class="cv cv--img{" cv--big" if big else ""}" aria-hidden="true"><img src="{cover_src(slug)}" alt="" width="900" height="900" loading="lazy" decoding="async"></span>'
     if kind == 'formation':
         art = '<span class="cv__screen"><span class="cv__play"></span><span class="cv__bar"><i></i></span></span><span class="cv__chip">4 modules</span>' if v == 1 else '<span class="cv__screen"><span class="cv__play"></span><span class="cv__bar"><i></i></span></span><span class="cv__chip">Leçon 1</span>'
     elif kind == 'template':

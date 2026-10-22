@@ -541,3 +541,8 @@ main.ck2 { flex: 1; padding-block: clamp(.75rem, 2vw, 1.5rem) clamp(2.5rem, 5vw,
   .ck-done path { animation: none; stroke-dashoffset: 0; }
   .ck2-state:not([hidden]) .ck2-timer__p { animation-duration: .01s; }
 }
+
+/* Miniatures photo des produits : l'image remplit la couverture, cadrée vers le haut pour garder la pastille et le titre */
+.cv--img { background: #EDF4FF; }
+.cv--img::before { display: none; }
+.cv.cv--img > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 12% 30%; }

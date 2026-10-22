@@ -39,7 +39,7 @@ def card(p, wide=False):
     sold = f'<span class="sx-c__s">{sales} ventes</span>' if sales else ''
     return f'''          <li class="sx-c{(" sx-c--" + wide) if wide else ""}" data-type="{KIND[typ]}">
             <a href="produit-{slug}.html">
-              <span class="sx-c__m">{cover(KIND[typ], v)}</span>
+              <span class="sx-c__m">{cover(KIND[typ], v, slug=slug)}</span>
               <span class="sx-c__b">
                 <span class="sx-c__k"><span class="sx-tag">{typ}</span>{sold}</span>
                 <span class="sx-c__n">{name}</span>
@@ -77,7 +77,7 @@ shop_page = head(f'{SHOP["name"]} · Boutique mepaye', 'Atelier Démo, la boutiq
         <a class="sx-feat" href="produit-{feat[0]}.html" aria-label="À la une : {feat[2]}, {fmt(feat[3])} XOF">
           <span class="sx-feat__arch">
             <span class="sx-feat__k">À la une</span>
-            {cover('formation', 1, big=True)}
+            {cover(KIND[feat[1]], feat[6], big=True, slug=feat[0])}
           </span>
           <span class="sx-feat__card">
             <span><small>{feat[1]} · {feat[4]} ventes</small><b>{feat[2]}</b></span>
@@ -125,7 +125,7 @@ shop_page = head(f'{SHOP["name"]} · Boutique mepaye', 'Atelier Démo, la boutiq
 print('écrit boutique.html')
 
 # ---------------------------------------------------------------- pages produit
-def views(kind, v):
+def views(kind, v, slug=None):
     """Trois vues de la galerie : couverture, aperçu, sommaire (illustrations, sans contenu inventé)."""
     if kind == 'formation':
         prev = '<span class="gv gv--video"><span class="gv__screen"><span class="cv__play"></span><span class="gv__track"><i></i></span></span></span>'
@@ -139,7 +139,7 @@ def views(kind, v):
         n, toc_ic = 5, 's-list'
     rows = ''.join(f'<li><span>{i:02d}</span><i style="width:{[62,48,70,54,44][i-1]}%"></i><svg><use href="#{toc_ic}"/></svg></li>' for i in range(1, n + 1))
     toc = f'<span class="gv gv--toc"><ol>{rows}</ol></span>'
-    return [('Couverture', cover(kind, v, big=True)), ('Aperçu', prev), ('Sommaire', toc)]
+    return [('Couverture', cover(kind, v, big=True, slug=slug)), ('Aperçu', prev), ('Sommaire', toc)]
 
 GAR = [('s-bolt', 'Accès immédiat', 'Livré dès le paiement'), ('i-lock', 'Paiement sécurisé', 'Mobile Money et carte'), ('s-undo', 'Garantie 7 jours', 'Satisfait ou remboursé'), ('i-shield', 'Données protégées', 'Confidentialité RGPD')]
 
@@ -147,8 +147,8 @@ for i, p in enumerate(P):
     slug, typ, name, price, sales, desc, v = p
     kind = KIND[typ]
     others = ([q for q in P if q != p and q[1] == typ][:1] + [q for q in P if q != p and q[1] != typ])[:3]
-    buy = f'data-buy data-name="{name}" data-type="{typ}" data-price="{price}"'
-    vw = views(kind, v)
+    buy = f'data-buy data-name="{name}" data-type="{typ}" data-price="{price}" data-cover="{cover_src(slug)}"'
+    vw = views(kind, v, slug)
     stage = ''.join(f'<div class="pg__v{"" if j == 0 else ""}" id="v-{slug}-{j}" role="tabpanel" aria-label="{t}"{"" if j == 0 else " hidden"}>{h}</div>' for j, (t, h) in enumerate(vw))
     thumbs = ''.join(f'<button type="button" role="tab" aria-selected="{"true" if j == 0 else "false"}" aria-controls="v-{slug}-{j}" tabindex="{0 if j == 0 else -1}"><span class="pg__th" aria-hidden="true">{h}</span><span>{t}</span></button>' for j, (t, h) in enumerate(vw))
     sold = f'<span class="pb__sales"><i aria-hidden="true"></i>{sales} ventes</span>' if sales else ''
@@ -230,7 +230,8 @@ def steps(test):
 
 def pay_page(test):
     p = P[0]
-    covers = ''.join(f'<span class="ck-cv" data-ck-cv="{k}"{"" if k == "formation" else " hidden"}>{cover(k, 1)}</span>' for k in ('formation', 'template', 'ebook'))
+    # la miniature du produit choisi, sinon l'illustration de son type (shop.js choisit)
+    covers = f'<span class="ck-cv" data-ck-cv="img"{"" if cover_src(p[0]) else " hidden"}>{cover(KIND[p[1]], 1, slug=p[0]) if cover_src(p[0]) else ""}</span>' + ''.join(f'<span class="ck-cv" data-ck-cv="{k}"{"" if k == KIND[p[1]] and not cover_src(p[0]) else " hidden"}>{cover(k, 1)}</span>' for k in ('formation', 'template', 'ebook'))
     summary = f'''      <aside class="ck2-sum" aria-label="Récapitulatif">
         <p class="ck2-shop"><span class="sh-av" data-ck-init>{SHOP['init']}</span><span data-ck-shop>{SHOP['name']}</span></p>
         <div class="ck2-item">{covers}<span><small data-ck-type>{p[1]}</small><b data-ck-name>{p[2]}</b></span></div>

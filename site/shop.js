@@ -66,7 +66,7 @@
 
   /* Le produit choisi suit jusqu'au paiement */
   $$('[data-buy]').forEach((a) => a.addEventListener('click', () => {
-    store.set('mp_cart', { name: a.dataset.name, type: a.dataset.type, price: +a.dataset.price });
+    store.set('mp_cart', { name: a.dataset.name, type: a.dataset.type, price: +a.dataset.price, cover: a.dataset.cover || '' });
   }));
   const bar = $('[data-pp-bar]'), buyBox = $('.pb');
   if (bar && buyBox) {
@@ -87,7 +87,11 @@
     $$('[data-ck-type]').forEach((el) => { el.textContent = cart.type; });
     $$('[data-ck-price]').forEach((el) => { el.textContent = fmt(cart.price); });
     const kind = { Formation: 'formation', Template: 'template', Ebook: 'ebook' }[cart.type] || 'formation';
-    $$('[data-ck-cv]').forEach((el) => { el.hidden = el.dataset.ckCv !== kind; });
+    // la miniature du produit choisi si elle existe, sinon l'illustration de son type
+    const img = $('[data-ck-cv="img"]');
+    if (cart.cover && img) img.innerHTML = '<span class="cv cv--img" aria-hidden="true"><img src="' + cart.cover + '" alt="" width="900" height="900"></span>';
+    const which = cart.cover && img ? 'img' : kind;
+    $$('[data-ck-cv]').forEach((el) => { el.hidden = el.dataset.ckCv !== which; });
   }
   if (mine && mine.name) {
     $$('[data-ck-shop]').forEach((el) => { el.textContent = mine.name; });
