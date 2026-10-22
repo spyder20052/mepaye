@@ -20,3 +20,6 @@ etude-polices/
 
 # avis de construction locaux
 *.log
+
+# cache Python des générateurs
+__pycache__/
