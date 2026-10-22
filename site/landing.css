@@ -646,11 +646,6 @@ html, body { overflow-x: clip; }
 
 /* avis, refonte : la note en tête dans une pastille dorée, la citation lisible, un grand guillemet en ornement,
    l'auteur sous un filet ; carte blanche légèrement dégradée, ombre douce, soulevée au survol */
-.avis__avg { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; font-size: 14px; color: var(--muted); }
-.avis__avg .quote__stars { margin: 0; }
-.avis__avg .quote__note { display: none; }
-.avis__avg .quote__stars .star { width: 16px; height: 16px; }
-.avis__avg b { font-weight: 500; color: var(--ink); }
 .quote { position: relative; overflow: hidden; padding: 26px 26px 22px; border-radius: 24px; background: linear-gradient(180deg, #fff 0%, #FAFCFF 100%);
   box-shadow: 0 0 0 1px rgba(24,24,27,.06), 0 1px 2px rgba(16,36,74,.04), 0 18px 40px -24px rgba(16,36,74,.22);
   transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s cubic-bezier(.22,1,.36,1); }
@@ -675,8 +670,7 @@ html, body { overflow-x: clip; }
   .quote__mark { font-size: 96px; top: -14px; right: 14px; }
   .quote blockquote { margin-top: 14px; margin-bottom: 16px; font-size: 15px; line-height: 22px; }
   .quotes--track .quote { width: 272px; min-height: 210px; }
-  .avis__avg { margin-top: 14px; font-size: 13px; }
-}
+  }
 /* l'ornement de la citation : un guillemet arrondi, très clair, calé en haut à droite */
 .quote > .quote__mark { top: 22px; right: 22px; width: 44px; height: 37px; font-size: 0; fill: #EAF1FF; }
 @media (max-width: 760px) { .quote > .quote__mark { top: 18px; right: 18px; width: 36px; height: 30px; } }
