@@ -162,9 +162,9 @@ body = f'''  <a class="skip" href="#contenu">Aller au contenu</a>
       </div>
     </section>
 
-{section('api', 'API Paiement', 'Votre site. Notre paiement.', 'Déjà un site, codé ou sur un CMS ? Créez une clé API, branchez notre page de paiement hébergée. Les fonds arrivent dans votre wallet.',
+{section('api', 'API Paiement', 'Gardez votre site.<br>Mepaye encaisse.', 'Branchez l’API Mepaye sur le site que vous avez déjà. Vos clients paient en Mobile Money ou par carte, l’argent arrive dans votre wallet.',
   scene('paiement', 'Un iPhone posé à plat affiche la page de paiement hébergée de Mepaye : Wave, Orange Money, MTN MoMo, Moov Money ou carte, pour 3 500 XOF', '22%', 'mockups', 4520, 2444) + focus('paiement', 640, 488, 'Moyens de paiement : Wave, Orange Money, MTN MoMo, Moov Money, Visa et Mastercard', 'Mobile Money · Carte · Paiement chiffré', 'r'), 'photo panel--photo-plat',
-  extra=chiprow(chip('key', '#7C5CE6', 'Clé API', 'tr'), chip('code', '#0866FF', 'Webhooks', 'bl')))}
+  extra=chiprow(chip('key', '#7C5CE6', 'Clé API', 'tr'), chip('code', '#0866FF', 'Mode test', 'bl')))}
 {section('affiliation', 'Affiliation', 'Vos clients deviennent vos vendeurs.', "Ouvrez votre programme d'affiliation en un clic. Fixez la commission (jusqu'à 60 %). Mepaye suit les ventes et paie vos affiliés automatiquement.",
   scene('affiliation', "Deux amies regardent l'espace affiliation de Mepaye et ses commissions", '45%') + focus('affiliation', 640, 363, 'Niveau Argent, 47 500 XOF de commissions reçues', 'Lien unique · Jusqu’à 60 % · Suivi automatique', 'r'), 'photo panel--shift')}
 {section('analytics', 'Analytics', 'Chaque décision, appuyée par vos chiffres.', 'Revenus, conversions, sources de trafic, comportement des acheteurs, ventes par pays. Tout dans un seul tableau de bord, sans outil externe.',
