@@ -180,7 +180,7 @@ L'ordre et les textes sont ceux de mepaye.com.
 | 8 | **API Paiement** : « Gardez votre site. Mepaye encaisse. » (remplace « Une boutique à votre image. », doublon de la section 2, à la demande du client le 22/10/2026) | iPhone posé à plat (`mockups/paiement.webp`) avec la vraie page de paiement hébergée `pay.mepaye.com` (ebook à 3 500 XOF, Studio Aïcha), encart net des moyens de paiement (`focus/paiement.webp`), puces « Clé API » et « Mode test » |
 | 9 | Vos clients deviennent vos vendeurs. | Deux amies et l'écran d'affiliation, avec l'encart du niveau Argent |
 | 10 | Chaque décision, appuyée par vos chiffres. | Doigt sur la courbe des revenus, avec l'encart de la courbe |
-| 11 | Ils l'utilisent. Ils l'adorent. | Avis en bande infinie, de droite à gauche, avec fondu sur les bords et pause au survol |
+| 11 | Ils l'utilisent. Ils l'adorent. | Badge de note moyenne (calculée sur les avis) sous le titre ; avis en bande infinie, de droite à gauche, avec fondu sur les bords et pause au survol ; cartes : étoiles et pastille de note en tête, citation, guillemet décoratif, auteur sous un filet |
 | 12 | Pourquoi Mepaye. | 4 cartes |
 | 13 | Commencez aujourd'hui. | Animation du « m » formé par deux personnes (logo plat) |
 | 14 | Pied de page | Comme mepaye.com |

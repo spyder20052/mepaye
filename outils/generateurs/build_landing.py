@@ -76,6 +76,7 @@ def section(sid, eyebrow, title, lead, panel, tone='blue', extra=''):
 PM = [('wave','Wave'),('orange-money','Orange Money'),('mtn-momo','MTN MoMo'),('moov-money','Moov Money'),('airtel-money','Airtel Money'),('mixx-tg','T-Money'),('flooz','Flooz'),('mixx-sn','Free Money'),('m-pesa','M-Pesa'),('celtiis','Celtiis Cash'),('visa','Visa'),('mastercard','Mastercard')]
 KINDS = [('doc','#0866FF','Fichiers','PDF, ZIP, presets, codes.'),('book','#5B4FE0','Ebook','Livre numérique, lecteur intégré.'),('play','#FF6A2C','Formation','Cours vidéo multi-leçons.'),('video','#F5B000','Coaching','Sessions 1:1 ou en groupe.'),('users','#16A36A','Communauté','Groupe privé WhatsApp ou Telegram.'),('brief','#E0457B','Service','Prestation sur-mesure.'),('box','#0EA5B7','Bundle','Packs de plusieurs produits.'),('key','#7C5CE6','Licence',"Clés ou codes d'activation."),('layout','#10244A','Template','Modèles réutilisables.')]
 QUOTES = [("Exactement la plateforme que j'attendais. Simple, claire, rapide.",'JK','Jean K.','#0866FF',4.5),("J'ai adoré dès la première utilisation. Tout est pensé pour aller vite.",'SM','Serge M.','#16A36A',5),("Enfin un outil fait pour nous. Je recommande sans hésiter.",'ID','Ibrahim D.','#7C5CE6',4.7),("Très bon. L'interface est belle et tout fonctionne.",'MB','Mamadou B.','#E0457B',4.8),("Bluffé par la qualité. On sent le soin dans chaque détail.",'AT','Alain T.','#F5B000',5),("La meilleure expérience que j'ai testée pour vendre en ligne.",'PN','Patrick N.','#0EA5B7',4.6),("Rapide, propre, efficace. J'adore.",'MS','Moussa S.','#FF6A2C',4.9),("Un vrai plaisir à utiliser. Hâte de lancer ma boutique.",'FO','Fabrice O.','#10244A',4.8)]
+AVG = round(sum(q[4] for q in QUOTES) / len(QUOTES), 1)  # note moyenne affichée sous le titre des avis
 STARS = ''.join(f'<svg class="star" width="16" height="13" aria-hidden="true"><use href="#i-star"/></svg>' for _ in range(5))
 def stars(r):
     # note décimale : la 5ᵉ étoile se remplit à la fraction de la note, « 4,5 » « 4,7 » à côté
@@ -85,7 +86,8 @@ def stars(r):
 def avis_marquee(items, mod):
     # une rangée du carrousel : la liste est doublée pour la boucle infinie, l'aria-hidden porte le doublon
     def carte(q, i, n, c, r):
-        return (f'<li class="quote"><blockquote>« {q} »</blockquote>{stars(r)}'
+        # carte : la note en tête, la citation (le guillemet est un ornement), l'auteur sous un filet
+        return (f'<li class="quote"><svg class="quote__mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M20 4C10.5 6.6 3.5 14 3.5 24.5 3.5 31.4 7.8 36 13.6 36c5 0 8.6-3.6 8.6-8.4 0-4.6-3.3-8-7.8-8.2.9-4.4 4.4-8.3 9.2-10.2L20 4zm24 0c-9.5 2.6-16.5 10-16.5 20.5 0 6.9 4.3 11.5 10.1 11.5 5 0 8.6-3.6 8.6-8.4 0-4.6-3.3-8-7.8-8.2.9-4.4 4.4-8.3 9.2-10.2L44 4z"/></svg>{stars(r)}<blockquote>{q}</blockquote>'
                 f'<p class="quote__who"><span class="quote__av" style="--c:{c}">{i}</span>{n}</p></li>')
     html = ''.join(carte(*x) for x in items)
     return (f'<div class="marquee marquee--{mod}"><ul class="quotes quotes--track">{html}</ul>'
@@ -172,6 +174,7 @@ body = f'''  <a class="skip" href="#contenu">Aller au contenu</a>
     <section class="sec" id="avis" aria-labelledby="avis-t">
       <div class="wrap">
         <header class="sh"><h2 class="sh__t" id="avis-t">Ils l'utilisent. Ils l'adorent.</h2><p class="sh__p">Les premiers créateurs sur Mepaye en parlent mieux que nous.</p></header>
+        <p class="avis__avg">{stars(AVG)}<span><b>{f"{AVG:.1f}".replace(".", ",")}</b>/5 de moyenne</span></p>
       </div>
       {avis_marquee(QUOTES, 'UNIQUE')}
     </section>

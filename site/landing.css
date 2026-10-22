@@ -643,3 +643,40 @@ button, summary { font: inherit; color: inherit; }
    quel que soit le zoom ou l'appareil (100vw des étoiles de fenêtre, carrousel, etc.) */
 html, body { overflow-x: clip; }
 .marquee { width: 100%; margin-left: max(-24px, calc(50% - 50vw)); margin-right: max(-24px, calc(50% - 50vw)); }
+
+/* avis, refonte : la note en tête dans une pastille dorée, la citation lisible, un grand guillemet en ornement,
+   l'auteur sous un filet ; carte blanche légèrement dégradée, ombre douce, soulevée au survol */
+.avis__avg { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; font-size: 14px; color: var(--muted); }
+.avis__avg .quote__stars { margin: 0; }
+.avis__avg .quote__note { display: none; }
+.avis__avg .quote__stars .star { width: 16px; height: 16px; }
+.avis__avg b { font-weight: 500; color: var(--ink); }
+.quote { position: relative; overflow: hidden; padding: 26px 26px 22px; border-radius: 24px; background: linear-gradient(180deg, #fff 0%, #FAFCFF 100%);
+  box-shadow: 0 0 0 1px rgba(24,24,27,.06), 0 1px 2px rgba(16,36,74,.04), 0 18px 40px -24px rgba(16,36,74,.22);
+  transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s cubic-bezier(.22,1,.36,1); }
+.quote__mark { position: absolute; top: -18px; right: 18px; font-family: var(--display); font-size: 120px; line-height: 1; color: #E3EEFF; pointer-events: none; }
+.quote > * { position: relative; }
+.quote > .quote__mark { position: absolute; }
+.quote__stars { margin-top: 0; gap: 10px; }
+.quote__stars-in, .quote__stars-fill { gap: 3px; }
+.quote__stars .star { width: 15px; height: 15px; }
+.quote__note { padding: 3px 8px; border-radius: 999px; background: #FFF6DB; color: #8A5A00; font-size: 12px; line-height: 14px; font-weight: 500; }
+.quote blockquote { margin-top: 16px; min-height: 0; font-size: 17px; line-height: 25px; }
+.quote__who { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(24,24,27,.07); gap: 12px; font-size: 14px; }
+.quote blockquote { margin-bottom: 18px; }
+.quote__av { width: 38px; height: 38px; font-size: 12px; box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(24,24,27,.06); }
+.quotes--track { padding: 18px 9px 30px; }
+.quotes--track .quote { width: 330px; min-height: 236px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .quote:hover { transform: translateY(-4px); box-shadow: 0 0 0 1px rgba(24,24,27,.06), 0 2px 4px rgba(16,36,74,.05), 0 26px 50px -24px rgba(16,36,74,.30); }
+}
+@media (max-width: 760px) {
+  .quote { padding: 20px 20px 18px; border-radius: 20px; }
+  .quote__mark { font-size: 96px; top: -14px; right: 14px; }
+  .quote blockquote { margin-top: 14px; margin-bottom: 16px; font-size: 15px; line-height: 22px; }
+  .quotes--track .quote { width: 272px; min-height: 210px; }
+  .avis__avg { margin-top: 14px; font-size: 13px; }
+}
+/* l'ornement de la citation : un guillemet arrondi, très clair, calé en haut à droite */
+.quote > .quote__mark { top: 22px; right: 22px; width: 44px; height: 37px; font-size: 0; fill: #EAF1FF; }
+@media (max-width: 760px) { .quote > .quote__mark { top: 18px; right: 18px; width: 36px; height: 30px; } }
