@@ -51,9 +51,9 @@ def phone(img, alt, cls='', ext='webp'):
             '<i class="ph__island" aria-hidden="true"></i><i class="ph__home" aria-hidden="true"></i></span></span>'
             '<i class="ph__k ph__k--act" aria-hidden="true"></i><i class="ph__k ph__k--up" aria-hidden="true"></i><i class="ph__k ph__k--dn" aria-hidden="true"></i>'
             '<i class="ph__k ph__k--pow" aria-hidden="true"></i><i class="ph__k ph__k--cam" aria-hidden="true"></i></figure>')
-def scene(img, alt, mpos='50%'):
+def scene(img, alt, mpos='50%', d='scenes', w=3344, h=1882):
     # photo de campagne : l'écran du téléphone est une vraie interface de l'app, incrustée
-    return f'<img class="scene" src="assets/scenes/{img}.webp" alt="{alt}" width="3344" height="1882" loading="lazy" decoding="async" style="--mpos:{mpos}">'
+    return f'<img class="scene" src="assets/{d}/{img}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async" style="--mpos:{mpos}">'
 def focus(img, w, h, alt, caption, side):
     # l'encart net : un morceau de la vraie interface, lisible, posé à côté de la photo
     return (f'<figure class="focus focus--{side}"><span class="focus__in"><img src="assets/focus/{img}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async"></span>'
@@ -162,8 +162,9 @@ body = f'''  <a class="skip" href="#contenu">Aller au contenu</a>
       </div>
     </section>
 
-{section('vitrine', 'Votre boutique', 'Une boutique à votre image.', 'Personnalisez chaque page sans une ligne de code. Votre domaine, vos couleurs, votre style. Pensée pour vendre sur mobile, construite pour être trouvée sur Google.',
-  scene('vitrine', 'Une cliente parcourt une page produit de la boutique Studio Aïcha sur son téléphone', '56%') + focus('produit', 640, 1049, 'Page produit : Ebook, 3 500 XOF, bouton Acheter maintenant', 'Domaine custom · Mobile&#8209;first · SEO Google', 'r'), 'photo')}
+{section('api', 'API Paiement', 'Votre site. Notre paiement.', 'Déjà un site, codé ou sur un CMS ? Créez une clé API, branchez notre page de paiement hébergée. Les fonds arrivent dans votre wallet.',
+  scene('paiement', 'Un iPhone posé à plat affiche la page de paiement hébergée de Mepaye : Wave, Orange Money, MTN MoMo, Moov Money ou carte, pour 3 500 XOF', '22%', 'mockups', 4520, 2444) + focus('paiement', 640, 488, 'Moyens de paiement : Wave, Orange Money, MTN MoMo, Moov Money, Visa et Mastercard', 'Mobile Money · Carte · Paiement chiffré', 'r'), 'photo panel--photo-plat',
+  extra=chiprow(chip('key', '#7C5CE6', 'Clé API', 'tr'), chip('code', '#0866FF', 'Webhooks', 'bl')))}
 {section('affiliation', 'Affiliation', 'Vos clients deviennent vos vendeurs.', "Ouvrez votre programme d'affiliation en un clic. Fixez la commission (jusqu'à 60 %). Mepaye suit les ventes et paie vos affiliés automatiquement.",
   scene('affiliation', "Deux amies regardent l'espace affiliation de Mepaye et ses commissions", '45%') + focus('affiliation', 640, 363, 'Niveau Argent, 47 500 XOF de commissions reçues', 'Lien unique · Jusqu’à 60 % · Suivi automatique', 'r'), 'photo panel--shift')}
 {section('analytics', 'Analytics', 'Chaque décision, appuyée par vos chiffres.', 'Revenus, conversions, sources de trafic, comportement des acheteurs, ventes par pays. Tout dans un seul tableau de bord, sans outil externe.',

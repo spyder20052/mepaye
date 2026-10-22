@@ -287,16 +287,20 @@ button, summary { font: inherit; color: inherit; }
 #revenus .scene, #affiliation .scene, #analytics .scene { object-position: 50% 0; }
 .focus figcaption { text-wrap: balance; }
 @media (max-width: 760px) {
-  #revenus .scene, #affiliation .scene, #analytics .scene, #vitrine .scene { object-position: var(--mpos) 0; }
+  #revenus .scene, #affiliation .scene, #analytics .scene { object-position: var(--mpos) 0; }
   .focus { width: min(280px, 78%); margin-top: -72px; }
 }
 @media (max-width: 760px) {
   /* le bas de la photo se fond dans le panneau, sous l'encart */
   .panel--photo .scene { -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%); mask-image: linear-gradient(to bottom, #000 72%, transparent 100%); }
 }
-/* l'encart de la boutique montre la couverture : il est plus haut, donc un peu plus étroit */
-#vitrine .focus { width: clamp(220px, 20vw, 256px); }
-@media (max-width: 760px) { #vitrine .focus { width: min(250px, 72%); } }
+/* API Paiement : le téléphone posé à plat, sur un fond gris qui se confond avec le panneau */
+.panel--photo-plat { background: #F3F3F3; }
+@media (max-width: 760px) {
+  /* le téléphone est large : on cadre en 4:3 pour le garder entier, l'encart remonte moins pour laisser voir le bouton Payer */
+  #api .scene { aspect-ratio: 4 / 3; }
+  #api .focus { margin-top: -28px; }
+}
 /* la légende reste sur une ligne, centrée sous l'encart même si elle déborde un peu */
 .focus figcaption { display: flex; justify-content: center; white-space: nowrap; }
 

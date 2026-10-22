@@ -176,7 +176,7 @@ L'ordre et les textes sont ceux de mepaye.com.
 | 5 | Votre argent, sur votre Mobile Money. | Photo d'une créatrice qui montre son solde, avec l'encart « Solde disponible » |
 | 6 | Décrivez votre idée. Mepaye rédige. | Main tenant un iPhone, avec le formulaire de génération d'ebook par l'IA, sur fond bleu pâle |
 | 7 | Un seul endroit. Tous vos produits. | Grille de 9 types de produits |
-| 8 | Une boutique à votre image. | Photo par-dessus l'épaule, avec l'encart de la page produit |
+| 8 | **API Paiement** : « Votre site. Notre paiement. » (remplace « Une boutique à votre image. », doublon de la section 2, à la demande du client le 22/10/2026) | iPhone posé à plat (`mockups/paiement.webp`) avec la vraie page de paiement hébergée `pay.mepaye.com` (ebook à 3 500 XOF, Studio Aïcha), encart net des moyens de paiement (`focus/paiement.webp`), puces « Clé API » et « Webhooks » |
 | 9 | Vos clients deviennent vos vendeurs. | Deux amies et l'écran d'affiliation, avec l'encart du niveau Argent |
 | 10 | Chaque décision, appuyée par vos chiffres. | Doigt sur la courbe des revenus, avec l'encart de la courbe |
 | 11 | Ils l'utilisent. Ils l'adorent. | Avis en bande infinie, de droite à gauche, avec fondu sur les bords et pause au survol |
@@ -222,6 +222,8 @@ UP=3 python3 outils/images/greenscreen.py photo.webp ecran.png sortie.png <dynam
    - Il retrouve les 4 coins de l'écran vert (RANSAC, insensible aux doigts) et pose l'écran en perspective à 3 fois la résolution.
    - Il ajoute la vraie barre d'état iOS (`outils/barre-ios/sb-0.png` et `sb-1.png`) et la barre d'accueil.
    - Il retire le liseré vert autour des doigts.
+   - Pour un téléphone vu très en biais (posé à plat), ajoutez `RATIO=852/393` : le format apparent de l'écran est faussé par la perspective, cette option impose le vrai format.
+   - La page de paiement se capture sans compte : achat test dans la boutique démo (cookie `preferred-currency=XOF`, faux nom, pays Côte d'Ivoire, numéro fictif), arrêt sur `pay.mepaye.com` sans payer.
 3. **Incruster dans un mockup à plusieurs téléphones :** `outils/images/mockup.py`.
 
 ```bash

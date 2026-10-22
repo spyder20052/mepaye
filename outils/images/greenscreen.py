@@ -104,6 +104,9 @@ def run(photo, shot, out, island, nav=0):
     wq = (np.linalg.norm(q[1] - q[0]) + np.linalg.norm(q[2] - q[3])) / 2
     hq = (np.linalg.norm(q[3] - q[0]) + np.linalg.norm(q[2] - q[1])) / 2
     sw = 800; sh = int(sw * hq / wq)
+    # téléphone vu très en biais (posé à plat) : le format apparent est faussé par la perspective,
+    # RATIO=852/393 impose le vrai format de l'écran
+    if os.environ.get('RATIO'): sh = int(sw * eval(os.environ['RATIO']))
     bh = round(sw * 54 / 393)  # barre d'état iOS : 54 pt sur 393
     ui = Image.open(shot).convert('RGB'); ow = ui.width; ui = ui.resize((sw, int(ui.height * sw / ui.width)), Image.LANCZOS)
     # écran iOS complet : barre d'état, contenu, barre d'onglets de l'app, puis la zone d'accueil (34 pt)
